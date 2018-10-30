@@ -44,10 +44,10 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.customerTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.smartMoversDataSet1 = new db_SmartMovers.SmartMoversDataSet1();
             this.customerPaymentJobBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.customerPaymentJobTableAdapter = new db_SmartMovers.SmartMoversDataSet1TableAdapters.CustomerPaymentJobTableAdapter();
-            this.customerTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.customerTypeTableAdapter = new db_SmartMovers.SmartMoversDataSet1TableAdapters.CustomerTypeTableAdapter();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.loadTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -62,21 +62,21 @@
             this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.productTableAdapter = new db_SmartMovers.SmartMoversDataSet1TableAdapters.ProductTableAdapter();
             this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
-            this.comboBox7 = new System.Windows.Forms.ComboBox();
-            this.comboBox8 = new System.Windows.Forms.ComboBox();
             this.driverBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.driverTableAdapter = new db_SmartMovers.SmartMoversDataSet1TableAdapters.DriverTableAdapter();
+            this.comboBox6 = new System.Windows.Forms.ComboBox();
             this.assistantBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.assistantTableAdapter = new db_SmartMovers.SmartMoversDataSet1TableAdapters.AssistantTableAdapter();
+            this.comboBox7 = new System.Windows.Forms.ComboBox();
             this.lorryBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.lorryTableAdapter = new db_SmartMovers.SmartMoversDataSet1TableAdapters.LorryTableAdapter();
+            this.comboBox8 = new System.Windows.Forms.ComboBox();
             this.containerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.driverTableAdapter = new db_SmartMovers.SmartMoversDataSet1TableAdapters.DriverTableAdapter();
+            this.assistantTableAdapter = new db_SmartMovers.SmartMoversDataSet1TableAdapters.AssistantTableAdapter();
+            this.lorryTableAdapter = new db_SmartMovers.SmartMoversDataSet1TableAdapters.LorryTableAdapter();
             this.containerTableAdapter = new db_SmartMovers.SmartMoversDataSet1TableAdapters.ContainerTableAdapter();
             this.label6 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.customerTypeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.smartMoversDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerPaymentJobBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.customerTypeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.loadTypeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.depotBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
@@ -223,6 +223,11 @@
             this.comboBox1.TabIndex = 15;
             this.comboBox1.ValueMember = "C_Type_Id";
             // 
+            // customerTypeBindingSource
+            // 
+            this.customerTypeBindingSource.DataMember = "CustomerType";
+            this.customerTypeBindingSource.DataSource = this.smartMoversDataSet1;
+            // 
             // smartMoversDataSet1
             // 
             this.smartMoversDataSet1.DataSetName = "SmartMoversDataSet1";
@@ -236,11 +241,6 @@
             // customerPaymentJobTableAdapter
             // 
             this.customerPaymentJobTableAdapter.ClearBeforeFill = true;
-            // 
-            // customerTypeBindingSource
-            // 
-            this.customerTypeBindingSource.DataMember = "CustomerType";
-            this.customerTypeBindingSource.DataSource = this.smartMoversDataSet1;
             // 
             // customerTypeTableAdapter
             // 
@@ -339,6 +339,11 @@
             this.comboBox5.TabIndex = 22;
             this.comboBox5.ValueMember = "Driver_Id";
             // 
+            // driverBindingSource
+            // 
+            this.driverBindingSource.DataMember = "Driver";
+            this.driverBindingSource.DataSource = this.smartMoversDataSet1;
+            // 
             // comboBox6
             // 
             this.comboBox6.DataSource = this.assistantBindingSource;
@@ -349,6 +354,11 @@
             this.comboBox6.Size = new System.Drawing.Size(121, 21);
             this.comboBox6.TabIndex = 23;
             this.comboBox6.ValueMember = "Assistant_Id";
+            // 
+            // assistantBindingSource
+            // 
+            this.assistantBindingSource.DataMember = "Assistant";
+            this.assistantBindingSource.DataSource = this.smartMoversDataSet1;
             // 
             // comboBox7
             // 
@@ -361,6 +371,11 @@
             this.comboBox7.TabIndex = 24;
             this.comboBox7.ValueMember = "Lorry_Id";
             // 
+            // lorryBindingSource
+            // 
+            this.lorryBindingSource.DataMember = "Lorry";
+            this.lorryBindingSource.DataSource = this.smartMoversDataSet1;
+            // 
             // comboBox8
             // 
             this.comboBox8.DataSource = this.containerBindingSource;
@@ -372,37 +387,22 @@
             this.comboBox8.TabIndex = 25;
             this.comboBox8.ValueMember = "Container_Id";
             // 
-            // driverBindingSource
+            // containerBindingSource
             // 
-            this.driverBindingSource.DataMember = "Driver";
-            this.driverBindingSource.DataSource = this.smartMoversDataSet1;
+            this.containerBindingSource.DataMember = "Container";
+            this.containerBindingSource.DataSource = this.smartMoversDataSet1;
             // 
             // driverTableAdapter
             // 
             this.driverTableAdapter.ClearBeforeFill = true;
             // 
-            // assistantBindingSource
-            // 
-            this.assistantBindingSource.DataMember = "Assistant";
-            this.assistantBindingSource.DataSource = this.smartMoversDataSet1;
-            // 
             // assistantTableAdapter
             // 
             this.assistantTableAdapter.ClearBeforeFill = true;
             // 
-            // lorryBindingSource
-            // 
-            this.lorryBindingSource.DataMember = "Lorry";
-            this.lorryBindingSource.DataSource = this.smartMoversDataSet1;
-            // 
             // lorryTableAdapter
             // 
             this.lorryTableAdapter.ClearBeforeFill = true;
-            // 
-            // containerBindingSource
-            // 
-            this.containerBindingSource.DataMember = "Container";
-            this.containerBindingSource.DataSource = this.smartMoversDataSet1;
             // 
             // containerTableAdapter
             // 
@@ -451,9 +451,9 @@
             this.Name = "Customer";
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.Customer_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.customerTypeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.smartMoversDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerPaymentJobBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.customerTypeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.loadTypeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.depotBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
