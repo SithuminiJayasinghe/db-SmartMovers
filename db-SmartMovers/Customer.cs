@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Data.SqlClient;
 namespace db_SmartMovers
 {
     public partial class Customer : Form
     {
+        SqlConnection m_con = new DatabaseConnection().getConnection();
+
         public Customer()
         {
             InitializeComponent();
@@ -37,6 +39,47 @@ namespace db_SmartMovers
             this.customerTypeTableAdapter.Fill(this.smartMoversDataSet1.CustomerType);
             // TODO: This line of code loads data into the 'smartMoversDataSet1.CustomerPaymentJob' table. You can move, or remove it, as needed.
             this.customerPaymentJobTableAdapter.Fill(this.smartMoversDataSet1.CustomerPaymentJob);
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string sql = "INSERT INTO Job (J_Start_Location,J_End_Location,D_Id,TimeStamp) Values ('" + textBox1.Text + "','" + textBox2.Text + "','" + comboBox3.SelectedValue + "','"+dateTimePicker1.Value+"')";
+                Console.WriteLine(sql);
+                SqlCommand cmd = new SqlCommand(sql, m_con);
+                m_con.Open();
+                cmd.ExecuteReader();
+                MessageBox.Show("Successful");
+
+
+            }
+
+
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Something went wrong. PLease check your inputs");
+            }
+            finally
+            {
+                m_con.Close();
+            }
+
+
+
+
+          
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
     }
