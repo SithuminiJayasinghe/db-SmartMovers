@@ -80,27 +80,27 @@ namespace db_SmartMovers
         }
         public void searchlocation()
         {
-            //try 
-            //{
-            //    string sql = "SELECT* FROM Job WHERE J_Start_Location LIKE ''" + textBox1.Text + "'+ '%''";
-              
-            //    SqlDataAdapter dataAdapter = new SqlDataAdapter(sql, m_con);
+            try
+            {
+                string sql = "SELECT* FROM Job WHERE J_Start_Location LIKE '" + textBox1.Text +"'+'%'";
+                Console.WriteLine(sql);
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(sql, m_con);
 
-            //    SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
-            //    DataSet ds = new DataSet();
-            //    dataAdapter.Fill(ds);
-            //    dataGridView1.ReadOnly = true;
-            //    dataGridView1.DataSource = ds.Tables[0];
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("Something went wrong. Please check your inputs!");
-            //}
-            //finally
-            //{
-            //    m_con.Close();
-            //}
-            
+                SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
+                DataSet ds = new DataSet();
+                dataAdapter.Fill(ds);
+                dataGridView1.ReadOnly = true;
+                dataGridView1.DataSource = ds.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Something went wrong. Please check your inputs!");
+            }
+            finally
+            {
+                m_con.Close();
+            }
+
         }
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
