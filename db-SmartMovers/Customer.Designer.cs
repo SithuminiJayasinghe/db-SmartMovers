@@ -257,7 +257,7 @@
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(121, 21);
             this.comboBox2.TabIndex = 16;
-            this.comboBox2.ValueMember = "L_Type_Cost";
+            this.comboBox2.ValueMember = "L_Type_Id";
             // 
             // loadTypeBindingSource
             // 
@@ -320,7 +320,7 @@
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(121, 21);
             this.comboBox4.TabIndex = 21;
-            this.comboBox4.ValueMember = "P_Cost";
+            this.comboBox4.ValueMember = "P_Id";
             // 
             // productBindingSource
             // 
@@ -424,7 +424,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 497);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.comboBox8);
             this.Controls.Add(this.comboBox7);
