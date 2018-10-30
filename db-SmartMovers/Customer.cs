@@ -51,7 +51,31 @@ namespace db_SmartMovers
         {
             try
             {
-                string sql = "INSERT INTO Job (J_Start_Location,J_End_Location,D_Id,TimeStamp) Values ('" + textBox1.Text + "','" + textBox2.Text + "','" + comboBox3.SelectedValue + "','"+dateTimePicker1.Value+"')";
+                string sql = "INSERT INTO TransportUnit (Lorry_Id,Container_Id,Driver_Id,Assistant_Id) Values ('" + comboBox7.SelectedValue + "','" + comboBox8.SelectedValue + "','" + comboBox5.SelectedValue + "','"+comboBox6.SelectedValue+"')";
+                Console.WriteLine(sql);
+                SqlCommand cmd = new SqlCommand(sql, m_con);
+                m_con.Open();
+                cmd.ExecuteReader();
+                MessageBox.Show("Successful");
+
+
+            }
+
+
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Something went wrong. PLease check your inputs");
+            }
+            finally
+            {
+                m_con.Close();
+            }
+
+
+            try
+            {
+                string sql = "INSERT INTO  (J_Start_Location,J_End_Location,D_Id,TimeStamp) Values ('" + textBox1.Text + "','" + textBox2.Text + "','" + comboBox3.SelectedValue + "','" + dateTimePicker1.Value + "')";
                 Console.WriteLine(sql);
                 SqlCommand cmd = new SqlCommand(sql, m_con);
                 m_con.Open();
@@ -74,8 +98,6 @@ namespace db_SmartMovers
 
 
 
-
-          
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
