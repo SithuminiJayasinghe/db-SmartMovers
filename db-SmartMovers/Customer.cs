@@ -15,6 +15,10 @@ namespace db_SmartMovers
         SqlConnection m_con = new DatabaseConnection().getConnection();
         public string LASTJID = "";
         public string LASTLID = "";
+        public string LASTCID = "";
+        public string C_Type_Id = "";
+        public int latestcid = 0;
+
         public int productcost=0;
         public int loadtypecost = 0;
         public int finalcost = 0;
@@ -142,7 +146,58 @@ namespace db_SmartMovers
 
         private void button1_Click(object sender, EventArgs e)
         {
-          
+            //try
+            //{
+            //    string customer = "select top 1 C_Id from Customer order by C_Id desc;";
+            //    Console.WriteLine(customer);
+            //    SqlCommand cmd_1 = new SqlCommand(customer, m_con);
+            //    m_con.Open();
+            //    SqlDataReader dreader_1 = cmd_1.ExecuteReader();
+
+            //    if (dreader_1.Read())
+            //    {
+            //        LASTCID = dreader_1[0].ToString();
+            //        dreader_1.Close();
+            //        latestcid = Convert.ToInt32(LASTCID);
+            //    }
+            //}
+
+
+            //catch (Exception ex)
+            //{
+
+            //    MessageBox.Show("Something went wrong in selecting last customer ID");
+            //}
+            //finally
+            //{
+            //    m_con.Close();
+            //}
+
+
+            //try
+            //{
+            //    string customertypeid = "INSERT INTO Customer (C_Type_Id) Values ('" + comboBox1.SelectedValue + "') WHERE C_Id='latestcid'";
+            //    Console.WriteLine(customertypeid);
+            //    SqlCommand cmd = new SqlCommand(customertypeid, m_con);
+            //    m_con.Open();
+            //    cmd.ExecuteReader();
+            //    MessageBox.Show("Successful");
+
+
+            //}
+
+
+            //catch (Exception ex)
+            //{
+
+            //    MessageBox.Show("Something went wrong with inserting customer type");
+            //}
+            //finally
+            //{
+            //    m_con.Close();
+            //}
+
+
 
 
             try
@@ -161,12 +216,15 @@ namespace db_SmartMovers
             catch (Exception ex)
             {
 
-                MessageBox.Show("Something went wrong. PLease check your inputs_1");
+                MessageBox.Show("Something went wrong in inserting job details");
             }
             finally
             {
                 m_con.Close();
             }
+
+
+
 
             try
             {
@@ -188,7 +246,7 @@ namespace db_SmartMovers
             catch (Exception ex)
             {
 
-                MessageBox.Show("Something went wrong. PLease check your inputs_2");
+                MessageBox.Show("Something went wrong in selecting last job ID");
             }
             finally
             {
@@ -211,7 +269,7 @@ namespace db_SmartMovers
             catch (Exception ex)
             {
 
-                MessageBox.Show("Something went wrong. PLease check your inputs_3");
+                MessageBox.Show("Something went wrong in inserting vales into load table");
             }
             finally
             {
@@ -239,7 +297,7 @@ namespace db_SmartMovers
             catch (Exception ex)
             {
 
-                MessageBox.Show("Something went wrong. PLease check your inputs_4");
+                MessageBox.Show("Something went wrong in selecting last load ID");
             }
             finally
             {
@@ -263,7 +321,7 @@ namespace db_SmartMovers
             catch (Exception ex)
             {
 
-                MessageBox.Show("Something went wrong. PLease check your inputs_5");
+                MessageBox.Show("Something went wrong with inserting transport unit details");
             }
             finally
             {
