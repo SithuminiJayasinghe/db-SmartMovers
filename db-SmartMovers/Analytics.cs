@@ -116,5 +116,17 @@ namespace db_SmartMovers
         {
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Sign_in si = new Sign_in();
+            si.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Admin aa = new Admin();
+            aa.Show();
+        }
     }
 }
