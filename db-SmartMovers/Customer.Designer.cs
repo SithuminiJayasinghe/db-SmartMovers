@@ -321,6 +321,7 @@
             this.comboBox4.Size = new System.Drawing.Size(121, 21);
             this.comboBox4.TabIndex = 21;
             this.comboBox4.ValueMember = "P_Id";
+            this.comboBox4.SelectedIndexChanged += new System.EventHandler(this.comboBox4_SelectedIndexChanged);
             // 
             // productBindingSource
             // 
@@ -419,6 +420,7 @@
             this.label6.Size = new System.Drawing.Size(16, 13);
             this.label6.TabIndex = 26;
             this.label6.Text = "...";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // Customer
             // 

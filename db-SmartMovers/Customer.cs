@@ -15,6 +15,12 @@ namespace db_SmartMovers
         SqlConnection m_con = new DatabaseConnection().getConnection();
         public string LASTJID = "";
         public string LASTLID = "";
+        public int productcost=0;
+        public Product p;
+        
+        Common c = new Common();
+
+
         public Customer()
         {
             InitializeComponent();
@@ -48,11 +54,13 @@ namespace db_SmartMovers
 
         }
 
-        public int cost()
+        private int cost()
         {
+            if (comboBox4.SelectedValue != null && comboBox2.SelectedValue != null)
 
-            try
             {
+                string PID = comboBox4.SelectedValue.ToString();
+                p = c.GetProductRowById(PID);
                 string productcost = "SELECT * FROM Product WHERE P_Id='" + comboBox4.SelectedValue + "'";
                 Console.WriteLine(productcost);
                 SqlCommand cmd_3 = new SqlCommand(productcost, m_con);
@@ -62,42 +70,43 @@ namespace db_SmartMovers
                 if (dreader_3.Read())
                 {
                     if (dreader_3[0].ToString().Equals(comboBox4.SelectedValue.ToString()))
+                    {
                         Console.WriteLine("productcost", dreader_3[4].ToString());
-                        productcost = Convert.ToInt32(dreader_3[4].ToString());
+                        productcost = dreader_3[4].ToString();
+                        label6.Text = productcost.ToString();
+                    }
+                    
 
+                    dreader_3.Close();
+                   
+                
                 }
-                dreader_3.Close();
-                //}
+            
 
-                //catch
-
-                //}
-            }
-
-
-            catch (Exception ex)
-            {
-
-                MessageBox.Show("Something went wrong. PLease check your inputs_2");
-            }
-            finally
-            {
                 m_con.Close();
+                return Convert.ToInt32( productcost);
             }
-
-
-            //    if (comboBox4.SelectedValue != null && comboBox2.SelectedValue != null)
-            //    {
-            //        string productcost = comboBox8.Text;
-            //        string vTypeID = comboBox8.SelectedValue.ToString();
-            //        PrintConsole("on Changed combo1 vTypeName ", vTypeName);
-            //        PrintConsole("on Changed combo1 vTypeID ", vTypeID);
-
-            //    }
-
-            //}
+                 
+            else
+            {
+                return 0;
+            }
 
         }
+
+
+        //    if (comboBox4.SelectedValue != null && comboBox2.SelectedValue != null)
+        //    {
+        //        string productcost = comboBox8.Text;
+        //        string vTypeID = comboBox8.SelectedValue.ToString();
+        //        PrintConsole("on Changed combo1 vTypeName ", vTypeName);
+        //        PrintConsole("on Changed combo1 vTypeID ", vTypeID);
+
+        //    }
+
+        //}
+
+    
 
 
 
@@ -244,6 +253,16 @@ namespace db_SmartMovers
         private void toolTip1_Popup(object sender, PopupEventArgs e)
         {
 
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cost();
         }
     }
 }
