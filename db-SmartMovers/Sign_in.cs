@@ -53,36 +53,36 @@ namespace db_SmartMovers
 
                         USER_ID = dreader[5].ToString();
 
-                        if (string.IsNullOrWhiteSpace(textBox1.Text))
-                        {
-                            textBox1.Focus();
-                            textBox1.BackColor = System.Drawing.Color.LightPink;
-
-
-
-                        }
-                        if (string.IsNullOrWhiteSpace(textBox2.Text))
-                        {
-                            textBox2.Focus();
-                            textBox2.BackColor = System.Drawing.Color.LightPink;
-
-
-
-                        }
-                        else
-                        {
-                            Customer fc = new Customer();
-                            fc.Show();
-                            this.Hide();
-                            textBox1.Clear();
-
-                            textBox2.Clear();
-
-                        }
 
                     }
 
 
+                    if (string.IsNullOrWhiteSpace(textBox1.Text))
+                    {
+                        textBox1.Focus();
+                        textBox1.BackColor = System.Drawing.Color.LightPink;
+
+
+
+                    }
+                    if (string.IsNullOrWhiteSpace(textBox2.Text))
+                    {
+                        textBox2.Focus();
+                        textBox2.BackColor = System.Drawing.Color.LightPink;
+
+
+
+                    }
+                    else
+                    {
+                        Customer fc = new Customer();
+                        fc.Show();
+                        this.Hide();
+                        textBox1.Clear();
+
+                        textBox2.Clear();
+
+                    }
 
 
 

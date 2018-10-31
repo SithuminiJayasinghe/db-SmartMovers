@@ -16,6 +16,9 @@ namespace db_SmartMovers
         public string LASTJID = "";
         public string LASTLID = "";
         public string LASTCID = "";
+        public string LASTPAYID = "";
+
+        
         public string C_Type_Id = "";
         public int latestcid = 0;
 
@@ -148,7 +151,7 @@ namespace db_SmartMovers
         {
             //try
             //{
-            //    string customer = "select top 1 C_Id from Customer order by C_Id desc;";
+            //    string customer = "select top 1 C_Id from order by C_Id desc;";
             //    Console.WriteLine(customer);
             //    SqlCommand cmd_1 = new SqlCommand(customer, m_con);
             //    m_con.Open();
@@ -354,6 +357,121 @@ namespace db_SmartMovers
             }
 
 
+            //try
+            //{
+            //    string Last_Pay_Id = "select top 1 Pay_Id from Payment order by Pay_Id desc;";
+            //    Console.WriteLine(Last_Pay_Id);
+            //    SqlCommand cmd_2 = new SqlCommand(Last_Pay_Id, m_con);
+            //    m_con.Open();
+            //    SqlDataReader dreader_2 = cmd_2.ExecuteReader();
+
+            //    if (dreader_2.Read())
+            //    {
+            //        LASTPAYID = dreader_2[0].ToString();
+            //        dreader_2.Close();
+            //        Console.WriteLine(LASTPAYID);
+            //    }
+            //}
+
+
+            //catch (Exception ex)
+            //{
+
+            //    MessageBox.Show("Something went wrong in selecting last pay ID");
+            //}
+            //finally
+            //{
+            //    m_con.Close();
+            //}
+
+
+            //try
+            //{
+            //    string Pay_ID = "INSERT INTO CustomerPaymentJob (Pay_ID) Values ('" + LASTPAYID + "')";
+            //    Console.WriteLine(Pay_ID);
+            //    SqlCommand cmd_4 = new SqlCommand(Pay_ID, m_con);
+            //    m_con.Open();
+            //    cmd_4.ExecuteReader();
+            //    MessageBox.Show("Successful");
+
+            //    string C_ID = "INSERT INTO CustomerPaymentJob (C_ID) Values ('" + LASTCID + "')";
+            //    Console.WriteLine(C_ID);
+            //    SqlCommand cmd_5 = new SqlCommand(C_ID, m_con);
+            //    m_con.Open();
+            //    cmd_5.ExecuteReader();
+            //    MessageBox.Show("Successful");
+
+
+            //    string J_ID = "INSERT INTO CustomerPaymentJob (J_ID) Values ('" + LASTJID + "')";
+            //    Console.WriteLine(J_ID);
+            //    SqlCommand cmd_6 = new SqlCommand(J_ID, m_con);
+            //    m_con.Open();
+            //    cmd_6.ExecuteReader();
+            //    MessageBox.Show("Successful");
+
+            //m_con.Close();
+
+            //}
+
+
+            //catch (Exception ex)
+            //{
+
+            //    MessageBox.Show("Something went wrong with inserting payID into customerpaymentjob table");
+            //}
+            //finally
+            //{
+            //    m_con.Close();
+            //}
+
+
+            //try
+            //{
+            //    string sql = "INSERT INTO CustomerPaymentJob (C_ID) Values ('" + LASTCID + "')";
+            //    Console.WriteLine(sql);
+            //    SqlCommand cmd = new SqlCommand(sql, m_con);
+            //    m_con.Open();
+            //    cmd.ExecuteReader();
+            //    MessageBox.Show("Successful");
+
+
+            //}
+
+
+            //catch (Exception ex)
+            //{
+
+            //    MessageBox.Show("Something went wrong with inserting CID into customerpaymentjob table");
+            //}
+            //finally
+            //{
+            //    m_con.Close();
+            //}
+
+
+
+            //try
+            //{
+            //    string sql = "INSERT INTO CustomerPaymentJob (J_ID) Values ('" + LASTJID + "')";
+            //    Console.WriteLine(sql);
+            //    SqlCommand cmd = new SqlCommand(sql, m_con);
+            //    m_con.Open();
+            //    cmd.ExecuteReader();
+            //    MessageBox.Show("Successful");
+
+
+            //}
+
+
+            //catch (Exception ex)
+            //{
+
+            //    MessageBox.Show("Something went wrong with inserting JID into customerpaymentjob table");
+            //}
+            //finally
+            //{
+            //    m_con.Close();
+            //}
 
 
         }
