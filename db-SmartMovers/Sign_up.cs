@@ -16,5 +16,10 @@ namespace db_SmartMovers
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
