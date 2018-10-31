@@ -184,6 +184,7 @@
             this.button3.TabIndex = 17;
             this.button3.Text = "Update";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -193,6 +194,7 @@
             this.button2.TabIndex = 16;
             this.button2.Text = "Fill";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -219,10 +221,14 @@
             // 
             // textBox22
             // 
+            this.textBox22.ForeColor = System.Drawing.SystemColors.ScrollBar;
             this.textBox22.Location = new System.Drawing.Point(117, 18);
             this.textBox22.Name = "textBox22";
             this.textBox22.Size = new System.Drawing.Size(73, 20);
             this.textBox22.TabIndex = 11;
+            this.textBox22.Text = "7000";
+            this.textBox22.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox22_MouseClick);
+            this.textBox22.TextChanged += new System.EventHandler(this.textBox22_TextChanged);
             // 
             // textBox23
             // 
@@ -264,10 +270,13 @@
             // 
             // textBox24
             // 
+            this.textBox24.ForeColor = System.Drawing.SystemColors.ScrollBar;
             this.textBox24.Location = new System.Drawing.Point(117, 17);
             this.textBox24.Name = "textBox24";
             this.textBox24.Size = new System.Drawing.Size(73, 20);
             this.textBox24.TabIndex = 15;
+            this.textBox24.Text = "7000";
+            this.textBox24.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox24_MouseClick);
             // 
             // textBox25
             // 
@@ -311,10 +320,13 @@
             // 
             // textBox19
             // 
+            this.textBox19.ForeColor = System.Drawing.SystemColors.ScrollBar;
             this.textBox19.Location = new System.Drawing.Point(119, 25);
             this.textBox19.Name = "textBox19";
             this.textBox19.Size = new System.Drawing.Size(73, 20);
             this.textBox19.TabIndex = 39;
+            this.textBox19.Text = "6000";
+            this.textBox19.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox19_MouseClick);
             // 
             // label19
             // 
@@ -374,10 +386,13 @@
             // 
             // textBox16
             // 
+            this.textBox16.ForeColor = System.Drawing.SystemColors.ScrollBar;
             this.textBox16.Location = new System.Drawing.Point(119, 18);
             this.textBox16.Name = "textBox16";
             this.textBox16.Size = new System.Drawing.Size(73, 20);
             this.textBox16.TabIndex = 33;
+            this.textBox16.Text = "6000";
+            this.textBox16.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox16_MouseClick);
             // 
             // label16
             // 
@@ -480,10 +495,13 @@
             // 
             // textBox8
             // 
+            this.textBox8.ForeColor = System.Drawing.SystemColors.ScrollBar;
             this.textBox8.Location = new System.Drawing.Point(118, 11);
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(73, 20);
             this.textBox8.TabIndex = 15;
+            this.textBox8.Text = "3000";
+            this.textBox8.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox8_MouseClick);
             // 
             // label8
             // 
@@ -496,10 +514,13 @@
             // 
             // textBox9
             // 
+            this.textBox9.ForeColor = System.Drawing.SystemColors.ScrollBar;
             this.textBox9.Location = new System.Drawing.Point(118, 39);
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(73, 20);
             this.textBox9.TabIndex = 13;
+            this.textBox9.Text = "300";
+            this.textBox9.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox9_MouseClick);
             // 
             // label9
             // 
@@ -536,10 +557,13 @@
             // 
             // textBox13
             // 
+            this.textBox13.ForeColor = System.Drawing.SystemColors.ScrollBar;
             this.textBox13.Location = new System.Drawing.Point(119, 17);
             this.textBox13.Name = "textBox13";
             this.textBox13.Size = new System.Drawing.Size(73, 20);
             this.textBox13.TabIndex = 21;
+            this.textBox13.Text = "1000";
+            this.textBox13.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox13_MouseClick);
             // 
             // label13
             // 
@@ -597,16 +621,19 @@
             // 
             // textBox6
             // 
+            this.textBox6.ForeColor = System.Drawing.SystemColors.ScrollBar;
             this.textBox6.Location = new System.Drawing.Point(118, 23);
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(73, 20);
+            this.textBox6.Size = new System.Drawing.Size(78, 20);
             this.textBox6.TabIndex = 7;
+            this.textBox6.Text = "Starts from 300";
+            this.textBox6.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox6_MouseClick);
             // 
             // textBox7
             // 
             this.textBox7.Location = new System.Drawing.Point(118, 54);
             this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(73, 20);
+            this.textBox7.Size = new System.Drawing.Size(78, 20);
             this.textBox7.TabIndex = 6;
             // 
             // label6
@@ -646,7 +673,7 @@
             // 
             this.textBox5.Location = new System.Drawing.Point(118, 82);
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(73, 20);
+            this.textBox5.Size = new System.Drawing.Size(78, 20);
             this.textBox5.TabIndex = 9;
             // 
             // label5
@@ -660,16 +687,20 @@
             // 
             // textBox3
             // 
+            this.textBox3.ForeColor = System.Drawing.SystemColors.ScrollBar;
             this.textBox3.Location = new System.Drawing.Point(118, 15);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(73, 20);
+            this.textBox3.Size = new System.Drawing.Size(78, 20);
             this.textBox3.TabIndex = 7;
+            this.textBox3.Text = "Starts from 400";
+            this.textBox3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox3_MouseClick);
+            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // textBox4
             // 
             this.textBox4.Location = new System.Drawing.Point(118, 47);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(73, 20);
+            this.textBox4.Size = new System.Drawing.Size(78, 20);
             this.textBox4.TabIndex = 6;
             // 
             // label3
@@ -707,15 +738,20 @@
             // 
             this.textBox2.Location = new System.Drawing.Point(115, 58);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(73, 20);
+            this.textBox2.Size = new System.Drawing.Size(78, 20);
             this.textBox2.TabIndex = 3;
             // 
             // textBox1
             // 
+            this.textBox1.ForeColor = System.Drawing.SystemColors.ScrollBar;
             this.textBox1.Location = new System.Drawing.Point(115, 23);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(73, 20);
+            this.textBox1.Size = new System.Drawing.Size(78, 20);
             this.textBox1.TabIndex = 2;
+            this.textBox1.Tag = "";
+            this.textBox1.Text = "Starts from 001";
+            this.textBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.text);
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label2
             // 
