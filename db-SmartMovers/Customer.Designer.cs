@@ -74,6 +74,10 @@
             this.lorryTableAdapter = new db_SmartMovers.SmartMoversDataSet1TableAdapters.LorryTableAdapter();
             this.containerTableAdapter = new db_SmartMovers.SmartMoversDataSet1TableAdapters.ContainerTableAdapter();
             this.label6 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.customerTypeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.smartMoversDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerPaymentJobBindingSource)).BeginInit();
@@ -188,11 +192,11 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(28, 366);
+            this.label13.Location = new System.Drawing.Point(28, 376);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(28, 13);
+            this.label13.Size = new System.Drawing.Size(54, 13);
             this.label13.TabIndex = 12;
-            this.label13.Text = "Cost";
+            this.label13.Text = "Total cost";
             // 
             // button1
             // 
@@ -258,6 +262,7 @@
             this.comboBox2.Size = new System.Drawing.Size(121, 21);
             this.comboBox2.TabIndex = 16;
             this.comboBox2.ValueMember = "L_Type_Id";
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // loadTypeBindingSource
             // 
@@ -422,11 +427,52 @@
             this.label6.Text = "...";
             this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(324, 179);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(67, 13);
+            this.label14.TabIndex = 27;
+            this.label14.Text = "Product cost";
+            this.label14.Click += new System.EventHandler(this.label14_Click);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(417, 176);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(16, 13);
+            this.label15.TabIndex = 28;
+            this.label15.Text = "...";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(324, 220);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(77, 13);
+            this.label16.TabIndex = 29;
+            this.label16.Text = "Load type cost";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(417, 220);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(16, 13);
+            this.label17.TabIndex = 30;
+            this.label17.Text = "...";
+            // 
             // Customer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 497);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.label14);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.comboBox8);
             this.Controls.Add(this.comboBox7);
@@ -518,5 +564,9 @@
         private System.Windows.Forms.BindingSource containerBindingSource;
         private SmartMoversDataSet1TableAdapters.ContainerTableAdapter containerTableAdapter;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
     }
 }

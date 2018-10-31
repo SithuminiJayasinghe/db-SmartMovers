@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 namespace db_SmartMovers
 {
     public class Product
-    {//store vehicle details to use in 87...
+    {
         public string P_Id;
         public string P_Type_Id;
         public string P_Name;
@@ -16,6 +16,17 @@ namespace db_SmartMovers
         public string P_Cost;
   
     }
+
+    public class LoadType
+    {
+        public string L_Type_Id;
+        public string L_Type_Name;
+        public string L_Type_Cost;
+       
+
+    }
+
+
 
     class Common
     {
@@ -27,12 +38,12 @@ namespace db_SmartMovers
             try
             {
 
-                string sql = "select * from Product where P_ID ='" + P_Id + "' ";
+                string sql = "select * from Product where P_Id ='" + P_Id + "' ";
                 SqlCommand cmd = new SqlCommand(sql, m_con);
                 m_con.Open();
                 SqlDataReader dreader = cmd.ExecuteReader();
 
-                // We are going to store driver data in this variable (Driver)
+                // We are going to store product data in this variable (product)
                 Product p = new Product();
 
                 if (dreader.Read())
@@ -45,6 +56,52 @@ namespace db_SmartMovers
                     p.P_Cost = dreader[4].ToString();
                     dreader.Close();
                     return p;
+
+                }
+                else
+                {
+                    return null;
+                }
+            }
+
+            catch (Exception ex)
+            {
+                return null;
+            }
+            finally
+            {
+                m_con.Close();
+            }
+
+
+
+        }
+
+
+
+        public LoadType GetLoadTypeRowById(String L_Type_Id)
+        {
+
+            try
+            {
+
+                string sql = "select * from LoadType where L_Type_Id ='" + L_Type_Id + "' ";
+                SqlCommand cmd = new SqlCommand(sql, m_con);
+                m_con.Open();
+                SqlDataReader dreader = cmd.ExecuteReader();
+
+                // We are going to store loadtype data in this variable (loadtype)
+
+                LoadType lt = new LoadType();
+
+                if (dreader.Read())
+                {
+
+                    lt.L_Type_Id = dreader[0].ToString();
+                    lt.L_Type_Name = dreader[1].ToString();
+                    lt.L_Type_Cost = dreader[2].ToString();
+                  
+                    return lt;
 
                 }
                 else

@@ -16,10 +16,17 @@ namespace db_SmartMovers
         public string LASTJID = "";
         public string LASTLID = "";
         public int productcost=0;
+        public int loadtypecost = 0;
+        public int finalcost = 0;
+        public int finalpcost=0;
+        public int finalltypecost = 0;
+
+
         public Product p;
+        public LoadType lt;
         
         Common c = new Common();
-
+        
 
         public Customer()
         {
@@ -73,20 +80,56 @@ namespace db_SmartMovers
                     {
                         Console.WriteLine("productcost", dreader_3[4].ToString());
                         productcost = dreader_3[4].ToString();
-                        label6.Text = productcost.ToString();
+                        label15.Text = productcost.ToString();
                     }
-                    
 
+                    finalpcost = Convert.ToInt32(productcost);
                     dreader_3.Close();
-                   
-                
+
+
                 }
-            
+
 
                 m_con.Close();
-                return Convert.ToInt32( productcost);
+
+
+
+
+                string LTYPEID = comboBox2.SelectedValue.ToString();
+                lt = c.GetLoadTypeRowById(LTYPEID);
+                string loadtypecost = "SELECT * FROM LoadType WHERE L_Type_Id='" + comboBox2.SelectedValue + "'";
+                Console.WriteLine(loadtypecost);
+                SqlCommand cmd_4 = new SqlCommand(loadtypecost, m_con);
+                m_con.Open();
+                SqlDataReader dreader_4 = cmd_4.ExecuteReader();
+
+                if (dreader_4.Read())
+                {
+                    if (dreader_4[0].ToString().Equals(comboBox2.SelectedValue.ToString()))
+                    {
+                        Console.WriteLine("loadtypecost", dreader_4[2].ToString());
+                        loadtypecost = dreader_4[2].ToString();
+                        label17.Text = loadtypecost.ToString();
+
+                    }
+
+                    finalltypecost = Convert.ToInt32(loadtypecost);
+                    dreader_4.Close();
+
+
+                }
+
+                m_con.Close();
+
+
+
+                finalcost = finalpcost + finalltypecost;
+                label6.Text = finalcost.ToString();
+
+
+                return finalcost;
+
             }
-                 
             else
             {
                 return 0;
@@ -95,20 +138,7 @@ namespace db_SmartMovers
         }
 
 
-        //    if (comboBox4.SelectedValue != null && comboBox2.SelectedValue != null)
-        //    {
-        //        string productcost = comboBox8.Text;
-        //        string vTypeID = comboBox8.SelectedValue.ToString();
-        //        PrintConsole("on Changed combo1 vTypeName ", vTypeName);
-        //        PrintConsole("on Changed combo1 vTypeID ", vTypeID);
-
-        //    }
-
-        //}
-
-    
-
-
+ 
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -261,6 +291,16 @@ namespace db_SmartMovers
         }
 
         private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cost();
+        }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             cost();
         }
