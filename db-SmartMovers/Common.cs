@@ -17,6 +17,7 @@ namespace db_SmartMovers
   
     }
 
+
     public class LoadType
     {
         public string L_Type_Id;
