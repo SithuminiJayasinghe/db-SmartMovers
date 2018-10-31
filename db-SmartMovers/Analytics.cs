@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace db_SmartMovers
 {
-    public partial class Form1 : Form
+    public partial class Analytics : Form
     {
         SqlConnection m_con = new DatabaseConnection().getConnection();
 
@@ -20,7 +20,7 @@ namespace db_SmartMovers
         string startDate = "";
         string endDate = "";
 
-        public Form1()
+        public Analytics()
         {
             InitializeComponent();
             startDate = startDateTime.Value.Date.ToString();
@@ -127,6 +127,12 @@ namespace db_SmartMovers
         {
             Admin aa = new Admin();
             aa.Show();
+            this.Hide();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

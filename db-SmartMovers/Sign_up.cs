@@ -129,5 +129,10 @@ namespace db_SmartMovers
         {
 
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

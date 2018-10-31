@@ -523,6 +523,8 @@ namespace db_SmartMovers
         {
             Sign_in si = new Sign_in();
             si.Show();
+            this.Hide();
+
         }
     }
 }

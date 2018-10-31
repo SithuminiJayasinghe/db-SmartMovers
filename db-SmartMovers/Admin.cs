@@ -376,12 +376,15 @@ namespace db_SmartMovers
         {
             Sign_in si = new Sign_in();
             si.Show();
+            this.Hide();
+
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
             Sign_in si = new Sign_in();
             si.Show();
+            this.Hide();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -532,6 +535,49 @@ namespace db_SmartMovers
         private void toolTip1_Popup(object sender, PopupEventArgs e)
         {
            
+        }
+
+        public void groupby()
+        {
+            try
+            {
+                string sql = "SELECT TOP (1000) Depot.D_Name, Depot.D_Location, COUNT(Job.J_Id) AS NumberOfJobs FROM  Job INNER JOIN  Depot ON Job.D_Id = Depot.D_Id  GROUP BY Depot.D_Name,Depot.D_Location;";
+                Console.WriteLine(sql);
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(sql, m_con);
+
+                SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
+                DataSet ds = new DataSet();
+                dataAdapter.Fill(ds);
+                dataGridView1.ReadOnly = true;
+                dataGridView1.DataSource = ds.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Something went wrong. Please check your inputs!");
+            }
+            finally
+            {
+                m_con.Close();
+            }
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+           
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            groupby();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            Analytics a = new Analytics();
+            a.Show();
+            this.Hide();
         }
     }
 }
