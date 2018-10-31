@@ -1,6 +1,6 @@
 ﻿namespace db_SmartMovers
 {
-    partial class Form2
+    partial class Sign_in
     {
         /// <summary>
         /// Required designer variable.

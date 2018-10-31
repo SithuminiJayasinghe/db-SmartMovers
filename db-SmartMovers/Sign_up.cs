@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace db_SmartMovers
 {
-    public partial class Form2 : Form
+    public partial class Sign_up : Form
     {
-        public Form2()
+        public Sign_up()
         {
             InitializeComponent();
         }
