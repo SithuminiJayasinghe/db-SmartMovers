@@ -14,6 +14,7 @@ namespace db_SmartMovers
     {
         SqlConnection m_con = new DatabaseConnection().getConnection();
         public string LASTJID = "";
+        public string LASTLID = "";
         public Customer()
         {
             InitializeComponent();
@@ -49,28 +50,7 @@ namespace db_SmartMovers
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    string sql = "INSERT INTO TransportUnit (Lorry_Id,Container_Id,Driver_Id,Assistant_Id) Values ('" + comboBox7.SelectedValue + "','" + comboBox8.SelectedValue + "','" + comboBox5.SelectedValue + "','"+comboBox6.SelectedValue+"')";
-            //    Console.WriteLine(sql);
-            //    SqlCommand cmd = new SqlCommand(sql, m_con);
-            //    m_con.Open();
-            //    cmd.ExecuteReader();
-            //    MessageBox.Show("Successful");
-
-
-            //}
-
-
-            //catch (Exception ex)
-            //{
-
-            //    MessageBox.Show("Something went wrong. PLease check your inputs");
-            //}
-            //finally
-            //{
-            //    m_con.Close();
-            //}
+          
 
 
             try
@@ -145,6 +125,59 @@ namespace db_SmartMovers
             {
                 m_con.Close();
             }
+
+
+            try
+            {
+                string Last_Load_Id = "select top 1 L_Id from Load order by L_Id desc;";
+                Console.WriteLine(Last_Load_Id);
+                SqlCommand cmd_2 = new SqlCommand(Last_Load_Id, m_con);
+                m_con.Open();
+                SqlDataReader dreader_2 = cmd_2.ExecuteReader();
+
+                if (dreader_2.Read())
+                {
+                    LASTLID = dreader_2[0].ToString();
+                    dreader_2.Close();
+
+                }
+            }
+
+
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Something went wrong. PLease check your inputs_4");
+            }
+            finally
+            {
+                m_con.Close();
+            }
+
+
+            try
+            {
+                string sql = "INSERT INTO TransportUnit (L_Id,Lorry_Id,Container_Id,Driver_Id,Assistant_Id) Values ('"+LASTLID+"','" + comboBox7.SelectedValue + "','" + comboBox8.SelectedValue + "','" + comboBox5.SelectedValue + "','" + comboBox6.SelectedValue + "')";
+                Console.WriteLine(sql);
+                SqlCommand cmd = new SqlCommand(sql, m_con);
+                m_con.Open();
+                cmd.ExecuteReader();
+                MessageBox.Show("Successful");
+
+
+            }
+
+
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Something went wrong. PLease check your inputs_5");
+            }
+            finally
+            {
+                m_con.Close();
+            }
+
         }
 
 
@@ -155,6 +188,9 @@ namespace db_SmartMovers
 
         }
 
+        private void toolTip1_Popup(object sender, PopupEventArgs e)
+        {
 
+        }
     }
 }
