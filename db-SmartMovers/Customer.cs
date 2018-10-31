@@ -328,6 +328,34 @@ namespace db_SmartMovers
                 m_con.Close();
             }
 
+
+
+            try
+            {
+                string sql = "INSERT INTO Payment (Pay_Amount) Values ('" + finalcost + "')";
+                Console.WriteLine(sql);
+                SqlCommand cmd = new SqlCommand(sql, m_con);
+                m_con.Open();
+                cmd.ExecuteReader();
+                MessageBox.Show("Successful");
+
+
+            }
+
+
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Something went wrong with inserting payment details");
+            }
+            finally
+            {
+                m_con.Close();
+            }
+
+
+
+
         }
 
 
@@ -364,6 +392,11 @@ namespace db_SmartMovers
         }
 
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
 
         }

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -43,7 +42,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.customerTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.smartMoversDataSet1 = new db_SmartMovers.SmartMoversDataSet1();
             this.customerPaymentJobBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -78,6 +76,7 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.customerTypeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.smartMoversDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerPaymentJobBindingSource)).BeginInit();
@@ -89,15 +88,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.lorryBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.containerBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(23, 19);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Category";
             // 
             // label2
             // 
@@ -216,18 +206,6 @@
             this.button2.TabIndex = 14;
             this.button2.Text = "Back";
             this.button2.UseVisualStyleBackColor = true;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DataSource = this.customerTypeBindingSource;
-            this.comboBox1.DisplayMember = "C_Type_Name";
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(144, 19);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 15;
-            this.comboBox1.ValueMember = "C_Type_Id";
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // customerTypeBindingSource
             // 
@@ -465,6 +443,10 @@
             this.label17.TabIndex = 30;
             this.label17.Text = "...";
             // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            // 
             // Customer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -485,7 +467,6 @@
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label13);
@@ -499,7 +480,6 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Name = "Customer";
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.Customer_Load);
@@ -519,8 +499,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -534,7 +512,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ComboBox comboBox1;
         private SmartMoversDataSet1 smartMoversDataSet1;
         private System.Windows.Forms.BindingSource customerPaymentJobBindingSource;
         private SmartMoversDataSet1TableAdapters.CustomerPaymentJobTableAdapter customerPaymentJobTableAdapter;
@@ -569,5 +546,6 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

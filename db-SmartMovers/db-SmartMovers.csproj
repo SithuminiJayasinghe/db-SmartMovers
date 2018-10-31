@@ -90,6 +90,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SmartMoversDataSet1.xsd</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Admin.resx">
+      <DependentUpon>Admin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Customer.resx">
       <DependentUpon>Customer.cs</DependentUpon>
     </EmbeddedResource>

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -39,12 +40,26 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.smartMoversDataSet1 = new db_SmartMovers.SmartMoversDataSet1();
+            this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.customerTableAdapter = new db_SmartMovers.SmartMoversDataSet1TableAdapters.CustomerTableAdapter();
+            this.customerTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.customerTypeTableAdapter = new db_SmartMovers.SmartMoversDataSet1TableAdapters.CustomerTypeTableAdapter();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.customerTypeBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.smartMoversDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customerTypeBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customerTypeBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.textBox2);
             this.groupBox1.Controls.Add(this.textBox3);
@@ -136,6 +151,54 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Name";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 213);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(49, 13);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Category";
+            // 
+            // smartMoversDataSet1
+            // 
+            this.smartMoversDataSet1.DataSetName = "SmartMoversDataSet1";
+            this.smartMoversDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // customerBindingSource
+            // 
+            this.customerBindingSource.DataMember = "Customer";
+            this.customerBindingSource.DataSource = this.smartMoversDataSet1;
+            // 
+            // customerTableAdapter
+            // 
+            this.customerTableAdapter.ClearBeforeFill = true;
+            // 
+            // customerTypeBindingSource
+            // 
+            this.customerTypeBindingSource.DataMember = "CustomerType";
+            this.customerTypeBindingSource.DataSource = this.smartMoversDataSet1;
+            // 
+            // customerTypeTableAdapter
+            // 
+            this.customerTypeTableAdapter.ClearBeforeFill = true;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DataSource = this.customerTypeBindingSource1;
+            this.comboBox1.DisplayMember = "C_Type_Name";
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(156, 205);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(100, 21);
+            this.comboBox1.TabIndex = 8;
+            this.comboBox1.ValueMember = "C_Type_Id";
+            // 
+            // customerTypeBindingSource1
+            // 
+            this.customerTypeBindingSource1.DataMember = "CustomerType";
+            this.customerTypeBindingSource1.DataSource = this.smartMoversDataSet1;
+            // 
             // Sign_up
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -144,8 +207,13 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "Sign_up";
             this.Text = "Sign up";
+            this.Load += new System.EventHandler(this.Sign_up_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.smartMoversDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customerTypeBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customerTypeBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -163,5 +231,13 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label5;
+        private SmartMoversDataSet1 smartMoversDataSet1;
+        private System.Windows.Forms.BindingSource customerBindingSource;
+        private SmartMoversDataSet1TableAdapters.CustomerTableAdapter customerTableAdapter;
+        private System.Windows.Forms.BindingSource customerTypeBindingSource;
+        private SmartMoversDataSet1TableAdapters.CustomerTypeTableAdapter customerTypeTableAdapter;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.BindingSource customerTypeBindingSource1;
     }
 }
