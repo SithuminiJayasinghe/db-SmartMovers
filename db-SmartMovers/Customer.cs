@@ -12,6 +12,8 @@ namespace db_SmartMovers
 {
     public partial class Customer : Form
     {
+        public static int USER_ID = 0;
+
         SqlConnection m_con = new DatabaseConnection().getConnection();
         public string LASTJID = "";
         public string LASTLID = "";
@@ -145,7 +147,245 @@ namespace db_SmartMovers
         }
 
 
- 
+
+
+
+        private void insertjobdetails()
+        {
+            try
+            {
+                string sql = "INSERT INTO  Job (J_Start_Location,J_End_Location,D_Id,TimeStamp) Values ('" + textBox1.Text + "','" + textBox2.Text + "','" + comboBox3.SelectedValue + "','" + dateTimePicker1.Value + "')";
+                Console.WriteLine(sql);
+                SqlCommand cmd = new SqlCommand(sql, m_con);
+                m_con.Open();
+                cmd.ExecuteReader();
+                MessageBox.Show("Successful");
+
+
+            }
+
+
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Something went wrong in inserting job details");
+            }
+            finally
+            {
+                m_con.Close();
+            }
+
+        }
+
+        private void getlastjid()
+        {
+            try
+            {
+                string Last_Job_Id = "select top 1 J_Id from Job order by J_Id desc;";
+                Console.WriteLine(Last_Job_Id);
+                SqlCommand cmd_1 = new SqlCommand(Last_Job_Id, m_con);
+                m_con.Open();
+                SqlDataReader dreader_1 = cmd_1.ExecuteReader();
+
+                if (dreader_1.Read())
+                {
+                    LASTJID = dreader_1[0].ToString();
+                    dreader_1.Close();
+
+                }
+            }
+
+
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Something went wrong in selecting last job ID");
+            }
+            finally
+            {
+                m_con.Close();
+            }
+
+        }
+
+
+        private void insertloaddetails()
+        {
+            try
+            {
+                string sql = "INSERT INTO Load  (L_Type_Id,J_Id,P_Id) Values ('" + comboBox2.SelectedValue + "','" + LASTJID + "','" + comboBox4.SelectedValue + "')";
+                Console.WriteLine(sql);
+                SqlCommand cmd = new SqlCommand(sql, m_con);
+                m_con.Open();
+                cmd.ExecuteReader();
+                MessageBox.Show("Successful");
+
+
+            }
+
+
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Something went wrong in inserting vales into load table");
+            }
+            finally
+            {
+                m_con.Close();
+            }
+
+        }
+
+
+
+        private void getlastlid()
+        {
+            try
+            {
+                string Last_Load_Id = "select top 1 L_Id from Load order by L_Id desc;";
+                Console.WriteLine(Last_Load_Id);
+                SqlCommand cmd_2 = new SqlCommand(Last_Load_Id, m_con);
+                m_con.Open();
+                SqlDataReader dreader_2 = cmd_2.ExecuteReader();
+
+                if (dreader_2.Read())
+                {
+                    LASTLID = dreader_2[0].ToString();
+                    dreader_2.Close();
+
+                }
+            }
+
+
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Something went wrong in selecting last load ID");
+            }
+            finally
+            {
+                m_con.Close();
+            }
+
+        }
+
+
+
+        private void inserttransportunitdetails()
+        { 
+           try
+            {
+                string sql = "INSERT INTO TransportUnit (L_Id,Lorry_Id,Container_Id,Driver_Id,Assistant_Id) Values ('" + LASTLID + "','" + comboBox7.SelectedValue + "','" + comboBox8.SelectedValue + "','" + comboBox5.SelectedValue + "','" + comboBox6.SelectedValue + "')";
+        Console.WriteLine(sql);
+                SqlCommand cmd = new SqlCommand(sql, m_con);
+        m_con.Open();
+                cmd.ExecuteReader();
+                MessageBox.Show("Successful");
+
+
+            }
+
+
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Something went wrong with inserting transport unit details");
+            }
+            finally
+            {
+                m_con.Close();
+            }
+
+
+        }
+
+
+        private void insertpaymentdetails()
+        {
+            try
+            {
+                string sql = "INSERT INTO Payment (Pay_Amount) Values ('" + finalcost + "')";
+                Console.WriteLine(sql);
+                SqlCommand cmd = new SqlCommand(sql, m_con);
+                m_con.Open();
+                cmd.ExecuteReader();
+                MessageBox.Show("Successful");
+
+
+            }
+
+
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Something went wrong with inserting payment details");
+            }
+            finally
+            {
+                m_con.Close();
+            }
+
+        }
+
+        private void getlastpayid()
+        {
+            try
+            {
+                string Last_Pay_Id = "select top 1 Pay_Id from Payment order by Pay_Id desc;";
+                Console.WriteLine(Last_Pay_Id);
+                SqlCommand cmd_2 = new SqlCommand(Last_Pay_Id, m_con);
+                m_con.Open();
+                SqlDataReader dreader_2 = cmd_2.ExecuteReader();
+
+                if (dreader_2.Read())
+                {
+                    LASTPAYID = dreader_2[0].ToString();
+                    dreader_2.Close();
+                    Console.WriteLine(LASTPAYID);
+                }
+            }
+
+
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Something went wrong in selecting last pay ID");
+            }
+            finally
+            {
+                m_con.Close();
+            }
+        }
+
+
+
+        private void insertintocustomerpaymentjobtable()
+        {
+            //last signed in CID = USERID//
+            try
+            {
+                string sql = "INSERT INTO CustomerPaymentJob Values ('" + USER_ID + "','" + LASTJID + "','" + LASTPAYID + "')";
+                Console.WriteLine(sql);
+                SqlCommand cmd = new SqlCommand(sql, m_con);
+                m_con.Open();
+                cmd.ExecuteReader();
+                MessageBox.Show("Successful");
+
+
+            }
+
+
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Something went wrong with inserting payment details");
+            }
+            finally
+            {
+                m_con.Close();
+            }
+        }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -200,163 +440,170 @@ namespace db_SmartMovers
             //    m_con.Close();
             //}
 
+            insertjobdetails();
 
 
-
-            try
-            {
-                string sql = "INSERT INTO  Job (J_Start_Location,J_End_Location,D_Id,TimeStamp) Values ('" + textBox1.Text + "','" + textBox2.Text + "','" + comboBox3.SelectedValue + "','" + dateTimePicker1.Value + "')";
-                Console.WriteLine(sql);
-                SqlCommand cmd = new SqlCommand(sql, m_con);
-                m_con.Open();
-                cmd.ExecuteReader();
-                MessageBox.Show("Successful");
-
-
-            }
+            //try
+            //{
+            //    string sql = "INSERT INTO  Job (J_Start_Location,J_End_Location,D_Id,TimeStamp) Values ('" + textBox1.Text + "','" + textBox2.Text + "','" + comboBox3.SelectedValue + "','" + dateTimePicker1.Value + "')";
+            //    Console.WriteLine(sql);
+            //    SqlCommand cmd = new SqlCommand(sql, m_con);
+            //    m_con.Open();
+            //    cmd.ExecuteReader();
+            //    MessageBox.Show("Successful");
 
 
-            catch (Exception ex)
-            {
-
-                MessageBox.Show("Something went wrong in inserting job details");
-            }
-            finally
-            {
-                m_con.Close();
-            }
+            //}
 
 
+            //catch (Exception ex)
+            //{
+
+            //    MessageBox.Show("Something went wrong in inserting job details");
+            //}
+            //finally
+            //{
+            //    m_con.Close();
+            //}
 
 
-            try
-            {
-                string Last_Job_Id = "select top 1 J_Id from Job order by J_Id desc;";
-                Console.WriteLine(Last_Job_Id);
-                SqlCommand cmd_1 = new SqlCommand(Last_Job_Id, m_con);
-                m_con.Open();
-                SqlDataReader dreader_1 = cmd_1.ExecuteReader();
+            getlastjid();
 
-                if (dreader_1.Read())
-                {
-                    LASTJID = dreader_1[0].ToString();
-                    dreader_1.Close();
+            //try
+            //{
+            //    string Last_Job_Id = "select top 1 J_Id from Job order by J_Id desc;";
+            //    Console.WriteLine(Last_Job_Id);
+            //    SqlCommand cmd_1 = new SqlCommand(Last_Job_Id, m_con);
+            //    m_con.Open();
+            //    SqlDataReader dreader_1 = cmd_1.ExecuteReader();
 
-                }
-            }
+            //    if (dreader_1.Read())
+            //    {
+            //        LASTJID = dreader_1[0].ToString();
+            //        dreader_1.Close();
 
-
-            catch (Exception ex)
-            {
-
-                MessageBox.Show("Something went wrong in selecting last job ID");
-            }
-            finally
-            {
-                m_con.Close();
-            }
-
-            try
-            {
-                string sql = "INSERT INTO Load  (L_Type_Id,J_Id,P_Id) Values ('" + comboBox2.SelectedValue + "','"+LASTJID+"','" + comboBox4.SelectedValue + "')";
-                Console.WriteLine(sql);
-                SqlCommand cmd = new SqlCommand(sql, m_con);
-                m_con.Open();
-                cmd.ExecuteReader();
-                MessageBox.Show("Successful");
+            //    }
+            //}
 
 
-            }
+            //catch (Exception ex)
+            //{
+
+            //    MessageBox.Show("Something went wrong in selecting last job ID");
+            //}
+            //finally
+            //{
+            //    m_con.Close();
+            //}
 
 
-            catch (Exception ex)
-            {
-
-                MessageBox.Show("Something went wrong in inserting vales into load table");
-            }
-            finally
-            {
-                m_con.Close();
-            }
+            insertloaddetails();
 
 
-            try
-            {
-                string Last_Load_Id = "select top 1 L_Id from Load order by L_Id desc;";
-                Console.WriteLine(Last_Load_Id);
-                SqlCommand cmd_2 = new SqlCommand(Last_Load_Id, m_con);
-                m_con.Open();
-                SqlDataReader dreader_2 = cmd_2.ExecuteReader();
-
-                if (dreader_2.Read())
-                {
-                    LASTLID = dreader_2[0].ToString();
-                    dreader_2.Close();
-
-                }
-            }
+            //try
+            //{
+            //    string sql = "INSERT INTO Load  (L_Type_Id,J_Id,P_Id) Values ('" + comboBox2.SelectedValue + "','"+LASTJID+"','" + comboBox4.SelectedValue + "')";
+            //    Console.WriteLine(sql);
+            //    SqlCommand cmd = new SqlCommand(sql, m_con);
+            //    m_con.Open();
+            //    cmd.ExecuteReader();
+            //    MessageBox.Show("Successful");
 
 
-            catch (Exception ex)
-            {
-
-                MessageBox.Show("Something went wrong in selecting last load ID");
-            }
-            finally
-            {
-                m_con.Close();
-            }
+            //}
 
 
-            try
-            {
-                string sql = "INSERT INTO TransportUnit (L_Id,Lorry_Id,Container_Id,Driver_Id,Assistant_Id) Values ('"+LASTLID+"','" + comboBox7.SelectedValue + "','" + comboBox8.SelectedValue + "','" + comboBox5.SelectedValue + "','" + comboBox6.SelectedValue + "')";
-                Console.WriteLine(sql);
-                SqlCommand cmd = new SqlCommand(sql, m_con);
-                m_con.Open();
-                cmd.ExecuteReader();
-                MessageBox.Show("Successful");
+            //catch (Exception ex)
+            //{
+
+            //    MessageBox.Show("Something went wrong in inserting vales into load table");
+            //}
+            //finally
+            //{
+            //    m_con.Close();
+            //}
 
 
-            }
+            getlastlid();
+
+            //try
+            //{
+            //    string Last_Load_Id = "select top 1 L_Id from Load order by L_Id desc;";
+            //    Console.WriteLine(Last_Load_Id);
+            //    SqlCommand cmd_2 = new SqlCommand(Last_Load_Id, m_con);
+            //    m_con.Open();
+            //    SqlDataReader dreader_2 = cmd_2.ExecuteReader();
+
+            //    if (dreader_2.Read())
+            //    {
+            //        LASTLID = dreader_2[0].ToString();
+            //        dreader_2.Close();
+
+            //    }
+            //}
 
 
-            catch (Exception ex)
-            {
+            //catch (Exception ex)
+            //{
 
-                MessageBox.Show("Something went wrong with inserting transport unit details");
-            }
-            finally
-            {
-                m_con.Close();
-            }
+            //    MessageBox.Show("Something went wrong in selecting last load ID");
+            //}
+            //finally
+            //{
+            //    m_con.Close();
+            //}
 
+            inserttransportunitdetails();
 
-
-            try
-            {
-                string sql = "INSERT INTO Payment (Pay_Amount) Values ('" + finalcost + "')";
-                Console.WriteLine(sql);
-                SqlCommand cmd = new SqlCommand(sql, m_con);
-                m_con.Open();
-                cmd.ExecuteReader();
-                MessageBox.Show("Successful");
-
-
-            }
+            //try
+            //{
+            //    string sql = "INSERT INTO TransportUnit (L_Id,Lorry_Id,Container_Id,Driver_Id,Assistant_Id) Values ('"+LASTLID+"','" + comboBox7.SelectedValue + "','" + comboBox8.SelectedValue + "','" + comboBox5.SelectedValue + "','" + comboBox6.SelectedValue + "')";
+            //    Console.WriteLine(sql);
+            //    SqlCommand cmd = new SqlCommand(sql, m_con);
+            //    m_con.Open();
+            //    cmd.ExecuteReader();
+            //    MessageBox.Show("Successful");
 
 
-            catch (Exception ex)
-            {
-
-                MessageBox.Show("Something went wrong with inserting payment details");
-            }
-            finally
-            {
-                m_con.Close();
-            }
+            //}
 
 
+            //catch (Exception ex)
+            //{
+
+            //    MessageBox.Show("Something went wrong with inserting transport unit details");
+            //}
+            //finally
+            //{
+            //    m_con.Close();
+            //}
+
+            insertpaymentdetails();
+
+            //try
+            //{
+            //    string sql = "INSERT INTO Payment (Pay_Amount) Values ('" + finalcost + "')";
+            //    Console.WriteLine(sql);
+            //    SqlCommand cmd = new SqlCommand(sql, m_con);
+            //    m_con.Open();
+            //    cmd.ExecuteReader();
+            //    MessageBox.Show("Successful");
+
+
+            //}
+
+
+            //catch (Exception ex)
+            //{
+
+            //    MessageBox.Show("Something went wrong with inserting payment details");
+            //}
+            //finally
+            //{
+            //    m_con.Close();
+            //}
+
+            getlastpayid();
             //try
             //{
             //    string Last_Pay_Id = "select top 1 Pay_Id from Payment order by Pay_Id desc;";
@@ -383,8 +630,10 @@ namespace db_SmartMovers
             //{
             //    m_con.Close();
             //}
+            //////////////////////////////////////////////////////////////////////////////////////////////////
 
-
+            insertintocustomerpaymentjobtable();
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////
             //try
             //{
             //    string Pay_ID = "INSERT INTO CustomerPaymentJob (Pay_ID) Values ('" + LASTPAYID + "')";
@@ -413,7 +662,6 @@ namespace db_SmartMovers
 
             //}
 
-
             //catch (Exception ex)
             //{
 
@@ -423,6 +671,13 @@ namespace db_SmartMovers
             //{
             //    m_con.Close();
             //}
+            ////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+            ////////////////////////////////////////////////////////////////////////////////////////
 
 
             //try
@@ -447,8 +702,10 @@ namespace db_SmartMovers
             //{
             //    m_con.Close();
             //}
+            ////////////////////////////////////////////////////////////////////////////////////////
 
 
+            ////////////////////////////////////////////////////////////////////////////////////////
 
             //try
             //{
@@ -472,6 +729,7 @@ namespace db_SmartMovers
             //{
             //    m_con.Close();
             //}
+            ////////////////////////////////////////////////////////////////////////////////////////
 
 
         }

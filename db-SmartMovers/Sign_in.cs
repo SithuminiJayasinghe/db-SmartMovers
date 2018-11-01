@@ -15,7 +15,8 @@ namespace db_SmartMovers
         static string constring = "Data Source=DESKTOP-MHS4TMT\\SQLEXPRESS;Initial Catalog=SmartMovers;Integrated Security=True";
         SqlConnection m_con = new SqlConnection(constring);
 
-        public static string USER_ID = "";
+        public static int USER_ID = 0;
+        public string userid = "";
 
 
         public Sign_in()
@@ -51,8 +52,9 @@ namespace db_SmartMovers
                     if (dreader[5].ToString().Equals(textBox2.Text))
                     {
 
-                        USER_ID = dreader[5].ToString();
+                        userid = dreader[5].ToString();
 
+                        USER_ID = Convert.ToInt32(userid);
 
                     }
 
