@@ -13,6 +13,15 @@ namespace db_SmartMovers
 {
     public partial class Admin : Form
     {
+        public static int USERID = 0;
+        public string lastdriverid = "";
+        public int LASTDRIVERID = 0;
+        public string lastdrivername = "";
+        public int LASTDRIVERNAME = 0;
+        public string lastdriverpassword = "";
+        public int LASTDRIVERPASSWORD = 0;
+
+
         SqlConnection m_con = new DatabaseConnection().getConnection();
 
         public Admin()
@@ -45,16 +54,16 @@ namespace db_SmartMovers
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void insertctype()
         {
             try
             {
-                string sql = "INSERT INTO  CustomerType Values ('" + textBox1.Text + "','" + textBox2.Text + "')";
+                string sql = "INSERT INTO  CustomerType Values (" + textBox1.Text + ",'" + textBox2.Text + "')";
                 Console.WriteLine(sql);
                 SqlCommand cmd = new SqlCommand(sql, m_con);
                 m_con.Open();
                 cmd.ExecuteReader();
-           
+
 
             }
 
@@ -68,16 +77,18 @@ namespace db_SmartMovers
             {
                 m_con.Close();
             }
+        }
 
-
+        private void insertltype()
+        {
             try
             {
-                string sql = "INSERT INTO  LoadType Values ('" + textBox3.Text + "','" + textBox4.Text + "','"+textBox5.Text+"')";
+                string sql = "INSERT INTO  LoadType Values ('" + textBox3.Text + "','" + textBox4.Text + "','" + textBox5.Text + "')";
                 Console.WriteLine(sql);
                 SqlCommand cmd = new SqlCommand(sql, m_con);
                 m_con.Open();
                 cmd.ExecuteReader();
-    
+
 
 
             }
@@ -92,7 +103,12 @@ namespace db_SmartMovers
             {
                 m_con.Close();
             }
+        }
 
+
+
+        private void insertptype()
+        {
 
             try
             {
@@ -101,7 +117,7 @@ namespace db_SmartMovers
                 SqlCommand cmd = new SqlCommand(sql, m_con);
                 m_con.Open();
                 cmd.ExecuteReader();
-        
+
 
 
             }
@@ -116,11 +132,11 @@ namespace db_SmartMovers
             {
                 m_con.Close();
             }
+        }
 
 
-
-
-
+        private void insertproduct()
+        {
             try
             {
                 string sql = "INSERT INTO  Product Values ('" + textBox8.Text + "','" + textBox9.Text + "','" + textBox10.Text + "','" + textBox11.Text + "','" + textBox12.Text + "')";
@@ -144,10 +160,11 @@ namespace db_SmartMovers
                 m_con.Close();
             }
 
+        }
 
 
-
-
+        private void insertdepot()
+        {
             try
             {
                 string sql = "INSERT INTO  Depot Values ('" + textBox13.Text + "','" + textBox14.Text + "','" + textBox15.Text + "')";
@@ -171,8 +188,11 @@ namespace db_SmartMovers
                 m_con.Close();
             }
 
+        }
 
 
+        private void insertdriver()
+        {
             try
             {
                 string sql = "INSERT INTO  Driver Values ('" + textBox16.Text + "','" + textBox17.Text + "','" + textBox18.Text + "')";
@@ -198,6 +218,333 @@ namespace db_SmartMovers
 
 
 
+
+
+           
+
+
+
+        }
+
+
+
+        private void insertassistant()
+        {
+            try
+            {
+                string sql = "INSERT INTO  Assistant Values ('" + textBox19.Text + "','" + textBox20.Text + "','" + textBox21.Text + "')";
+                Console.WriteLine(sql);
+                SqlCommand cmd = new SqlCommand(sql, m_con);
+                m_con.Open();
+                cmd.ExecuteReader();
+
+            }
+
+
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Something went wrong in inserting Assistant details");
+            }
+            finally
+            {
+                m_con.Close();
+            }
+
+        }
+
+
+        private void insertlorry()
+        {
+            try
+            {
+                string sql = "INSERT INTO  Lorry Values ('" + textBox22.Text + "','" + textBox23.Text + "')";
+                Console.WriteLine(sql);
+                SqlCommand cmd = new SqlCommand(sql, m_con);
+                m_con.Open();
+                cmd.ExecuteReader();
+
+            }
+
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Something went wrong in inserting Lorry details");
+            }
+            finally
+            {
+                m_con.Close();
+            }
+
+
+        }
+
+        private void insertcontainer()
+        {
+            try
+            {
+                string sql = "INSERT INTO  Container Values ('" + textBox24.Text + "','" + textBox25.Text + "')";
+                Console.WriteLine(sql);
+                SqlCommand cmd = new SqlCommand(sql, m_con);
+                m_con.Open();
+                cmd.ExecuteReader();
+
+
+
+            }
+
+
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Something went wrong in inserting Container details");
+            }
+            finally
+            {
+                m_con.Close();
+            }
+
+
+        }
+
+
+        private void lastdriver()
+        {
+            try
+            {
+                string lastdriver = "select * from Driver order by Driver_Id desc;";
+                Console.WriteLine(lastdriver);
+                SqlCommand cmd_2 = new SqlCommand(lastdriver, m_con);
+                m_con.Open();
+                SqlDataReader dreader_2 = cmd_2.ExecuteReader();
+
+                if (dreader_2.Read())
+                {
+                    lastdriverid = dreader_2[0].ToString();
+                    LASTDRIVERID = Convert.ToInt32(lastdriverid);
+
+                    lastdrivername = dreader_2[1].ToString();
+                    LASTDRIVERNAME = Convert.ToInt32(lastdrivername);
+
+                    lastdriverpassword = dreader_2[2].ToString();
+                    LASTDRIVERPASSWORD = Convert.ToInt32(lastdriverpassword);
+
+
+                    dreader_2.Close();
+                }
+            }
+
+
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Something went wrong in selecting last driver details");
+            }
+            finally
+            {
+                m_con.Close();
+            }
+        }
+
+        private void insertdriverintoemployee()
+        {
+            try
+            {
+                string sql_1 = "insert into  Employee values ('" + LASTDRIVERID + "','" + lastdrivername + "','" + LASTDRIVERPASSWORD + "')";
+
+                Console.WriteLine(sql_1);
+                SqlCommand cmd_1 = new SqlCommand(sql_1, m_con);
+                m_con.Open();
+                cmd_1.ExecuteReader();
+
+
+
+            }
+
+
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("something went wrong in inserting employee details");
+            }
+            finally
+            {
+                m_con.Close();
+            }
+
+        }
+
+
+        private void insertlorrydetailsintoemployeetable()
+        {
+
+
+        }
+
+        private void getlinsertcontainerdetailsintoemployeetableastcontainerid()
+        {
+
+
+        }
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            insertctype();
+            //try
+            //{
+            //    string sql = "INSERT INTO  CustomerType Values ('" + textBox1.Text + "','" + textBox2.Text + "')";
+            //    Console.WriteLine(sql);
+            //    SqlCommand cmd = new SqlCommand(sql, m_con);
+            //    m_con.Open();
+            //    cmd.ExecuteReader();
+
+
+            //}
+
+
+            //catch (Exception ex)
+            //{
+
+            //    MessageBox.Show("Something went wrong in inserting CustomerType details");
+            //}
+            //finally
+            //{
+            //    m_con.Close();
+            //}
+
+
+
+            insertltype();
+            //try
+            //{
+            //    string sql = "INSERT INTO  LoadType Values ('" + textBox3.Text + "','" + textBox4.Text + "','"+textBox5.Text+"')";
+            //    Console.WriteLine(sql);
+            //    SqlCommand cmd = new SqlCommand(sql, m_con);
+            //    m_con.Open();
+            //    cmd.ExecuteReader();
+
+
+
+            //}
+
+
+            //catch (Exception ex)
+            //{
+
+            //    MessageBox.Show("Something went wrong in inserting LoadType details");
+            //}
+            //finally
+            //{
+            //    m_con.Close();
+            //}
+
+            insertptype();
+            //try
+            //{
+            //    string sql = "INSERT INTO  ProductType Values ('" + textBox6.Text + "','" + textBox7.Text + "')";
+            //    Console.WriteLine(sql);
+            //    SqlCommand cmd = new SqlCommand(sql, m_con);
+            //    m_con.Open();
+            //    cmd.ExecuteReader();
+
+
+
+            //}
+
+
+            //catch (Exception ex)
+            //{
+
+            //    MessageBox.Show("Something went wrong in inserting ProductType details");
+            //}
+            //finally
+            //{
+            //    m_con.Close();
+            //}
+
+
+
+            insertproduct();
+
+            //try
+            //{
+            //    string sql = "INSERT INTO  Product Values ('" + textBox8.Text + "','" + textBox9.Text + "','" + textBox10.Text + "','" + textBox11.Text + "','" + textBox12.Text + "')";
+            //    Console.WriteLine(sql);
+            //    SqlCommand cmd = new SqlCommand(sql, m_con);
+            //    m_con.Open();
+            //    cmd.ExecuteReader();
+
+
+
+            //}
+
+
+            //catch (Exception ex)
+            //{
+
+            //    MessageBox.Show("Something went wrong in inserting Product details");
+            //}
+            //finally
+            //{
+            //    m_con.Close();
+            //}
+
+
+
+
+            insertdepot();
+            //try
+            //{
+            //    string sql = "INSERT INTO  Depot Values ('" + textBox13.Text + "','" + textBox14.Text + "','" + textBox15.Text + "')";
+            //    Console.WriteLine(sql);
+            //    SqlCommand cmd = new SqlCommand(sql, m_con);
+            //    m_con.Open();
+            //    cmd.ExecuteReader();
+
+
+
+            //}
+
+
+            //catch (Exception ex)
+            //{
+
+            //    MessageBox.Show("Something went wrong in inserting Depot details");
+            //}
+            //finally
+            //{
+            //    m_con.Close();
+            //}
+
+
+            insertdriver();
+            //try
+            //{
+            //    string sql = "INSERT INTO  Driver Values ('" + textBox16.Text + "','" + textBox17.Text + "','" + textBox18.Text + "')";
+            //    Console.WriteLine(sql);
+            //    SqlCommand cmd = new SqlCommand(sql, m_con);
+            //    m_con.Open();
+            //    cmd.ExecuteReader();
+
+
+
+            //}
+
+
+            //catch (Exception ex)
+            //{
+
+            //    MessageBox.Show("Something went wrong in inserting Driver details");
+            //}
+            //finally
+            //{
+            //    m_con.Close();
+            //}
+           
+            //insertdriverintoemployee();
+            ////////////////////////////////////////////////////////////////////////////////////////////////
             //try
             //{
             //    string sql = "INSERT INTO  Employee Values ('" + textBox16.Text + "','" + textBox17.Text + "','" + textBox18.Text + "')";
@@ -223,30 +570,31 @@ namespace db_SmartMovers
 
 
 
+            insertassistant();
+            //try
+            //{
+            //    string sql = "INSERT INTO  Assistant Values ('" + textBox19.Text + "','" + textBox20.Text + "','" + textBox21.Text + "')";
+            //    Console.WriteLine(sql);
+            //    SqlCommand cmd = new SqlCommand(sql, m_con);
+            //    m_con.Open();
+            //    cmd.ExecuteReader();
 
-            try
-            {
-                string sql = "INSERT INTO  Assistant Values ('" + textBox19.Text + "','" + textBox20.Text + "','" + textBox21.Text + "')";
-                Console.WriteLine(sql);
-                SqlCommand cmd = new SqlCommand(sql, m_con);
-                m_con.Open();
-                cmd.ExecuteReader();
-                
-            }
-
-
-            catch (Exception ex)
-            {
-
-                MessageBox.Show("Something went wrong in inserting Assistant details");
-            }
-            finally
-            {
-                m_con.Close();
-            }
+            //}
 
 
+            //catch (Exception ex)
+            //{
 
+            //    MessageBox.Show("Something went wrong in inserting Assistant details");
+            //}
+            //finally
+            //{
+            //    m_con.Close();
+            //}
+
+
+
+            ////////////////////////////////////////////////////////////////////////////////////////////////
 
             //try
             //{
@@ -255,7 +603,7 @@ namespace db_SmartMovers
             //    SqlCommand cmd = new SqlCommand(sql, m_con);
             //    m_con.Open();
             //    cmd.ExecuteReader();
-                
+
             //}
 
 
@@ -271,28 +619,29 @@ namespace db_SmartMovers
 
 
 
+            insertlorry();
+            //try
+            //{
+            //    string sql = "INSERT INTO  Lorry Values ('" + textBox22.Text + "','" + textBox23.Text + "')";
+            //    Console.WriteLine(sql);
+            //    SqlCommand cmd = new SqlCommand(sql, m_con);
+            //    m_con.Open();
+            //    cmd.ExecuteReader();
 
-            try
-            {
-                string sql = "INSERT INTO  Lorry Values ('" + textBox22.Text + "','" + textBox23.Text + "')";
-                Console.WriteLine(sql);
-                SqlCommand cmd = new SqlCommand(sql, m_con);
-                m_con.Open();
-                cmd.ExecuteReader();
-                
-            }
-            
-            catch (Exception ex)
-            {
+            //}
 
-                MessageBox.Show("Something went wrong in inserting Lorry details");
-            }
-            finally
-            {
-                m_con.Close();
-            }
+            //catch (Exception ex)
+            //{
+
+            //    MessageBox.Show("Something went wrong in inserting Lorry details");
+            //}
+            //finally
+            //{
+            //    m_con.Close();
+            //}
 
 
+            ////////////////////////////////////////////////////////////////////////////////////////////////
 
             //try
             //{
@@ -319,30 +668,34 @@ namespace db_SmartMovers
 
 
 
-
-            try
-            {
-                string sql = "INSERT INTO  Container Values ('" + textBox24.Text + "','" + textBox25.Text + "')";
-                Console.WriteLine(sql);
-                SqlCommand cmd = new SqlCommand(sql, m_con);
-                m_con.Open();
-                cmd.ExecuteReader();
-
-
-
-            }
+            insertcontainer();
+            //try
+            //{
+            //    string sql = "INSERT INTO  Container Values ('" + textBox24.Text + "','" + textBox25.Text + "')";
+            //    Console.WriteLine(sql);
+            //    SqlCommand cmd = new SqlCommand(sql, m_con);
+            //    m_con.Open();
+            //    cmd.ExecuteReader();
 
 
-            catch (Exception ex)
-            {
 
-                MessageBox.Show("Something went wrong in inserting Container details");
-            }
-            finally
-            {
-                m_con.Close();
-            }
+            //}
 
+
+            //catch (Exception ex)
+            //{
+
+            //    MessageBox.Show("Something went wrong in inserting Container details");
+            //}
+            //finally
+            //{
+            //    m_con.Close();
+            //}
+
+
+
+
+            ////////////////////////////////////////////////////////////////////////////////////////////////
 
             //try
             //{
