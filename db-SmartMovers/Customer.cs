@@ -12,7 +12,9 @@ namespace db_SmartMovers
 {
     public partial class Customer : Form
     {
-        public static int USER_ID = 0;
+        public int USER_ID = 0;
+        public string cid = "";
+
 
         SqlConnection m_con = new DatabaseConnection().getConnection();
         public string LASTJID = "";
@@ -33,6 +35,7 @@ namespace db_SmartMovers
 
         public Product p;
         public LoadType lt;
+        public Customer cus;
         
         Common c = new Common();
         
@@ -342,6 +345,7 @@ namespace db_SmartMovers
                     LASTPAYID = dreader_2[0].ToString();
                     dreader_2.Close();
                     Console.WriteLine(LASTPAYID);
+                                      
                 }
             }
 
@@ -364,7 +368,10 @@ namespace db_SmartMovers
             //last signed in CID = USERID//
             try
             {
-                string sql = "INSERT INTO CustomerPaymentJob Values ('" + USER_ID + "','" + LASTJID + "','" + LASTPAYID + "')";
+               
+                Customerdetails customer = c.GetCustomerRowById(Sign_in.cid);
+                
+                string sql = "INSERT INTO CustomerPaymentJob Values ('" + cid + "','" + LASTJID + "','" + LASTPAYID + "')";
                 Console.WriteLine(sql);
                 SqlCommand cmd = new SqlCommand(sql, m_con);
                 m_con.Open();

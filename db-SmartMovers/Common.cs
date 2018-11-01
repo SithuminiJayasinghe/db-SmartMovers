@@ -7,6 +7,20 @@ using System.Data.SqlClient;
 
 namespace db_SmartMovers
 {
+
+    public class Customerdetails
+    {
+        public string C_Id;
+        public string C_Type_Id;
+        public string C_Name;
+        public string C_Address;
+        public string C_Email;
+        public string C_Password;
+
+
+    }
+
+
     public class Product
     {
         public string P_Id;
@@ -32,6 +46,58 @@ namespace db_SmartMovers
     class Common
     {
         SqlConnection m_con = new DatabaseConnection().getConnection();
+
+
+        public Customerdetails GetCustomerRowById(String C_Id)
+        {
+
+            try
+            {
+
+                string sql = "select * from Customer where C_Id ='" + C_Id + "' ";
+                SqlCommand cmd = new SqlCommand(sql, m_con);
+                m_con.Open();
+                SqlDataReader dreader = cmd.ExecuteReader();
+
+                // We are going to store Customer data in this variable (Customer)
+                Customerdetails cus = new Customerdetails();
+
+                if (dreader.Read())
+                {
+
+                    cus.C_Id = dreader[0].ToString();
+                    cus.C_Type_Id = dreader[1].ToString();
+                    cus.C_Name = dreader[2].ToString();
+                    cus.C_Address = dreader[3].ToString();
+                    cus.C_Email = dreader[4].ToString();
+                    cus.C_Password = dreader[5].ToString();
+
+                    dreader.Close();
+                    return cus;
+
+                }
+                else
+                {
+                    return null;
+                }
+            }
+
+            catch (Exception ex)
+            {
+                return null;
+            }
+            finally
+            {
+                m_con.Close();
+            }
+
+
+
+        }
+
+
+
+
 
         public Product GetProductRowById(String P_Id)
         {
