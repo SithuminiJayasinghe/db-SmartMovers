@@ -609,6 +609,35 @@ namespace db_SmartMovers
                   textBox1.Clear();
                   textBox2.Clear();
         }
-    
+
+        public void customerpayjob()
+        {
+            try
+            {
+                string sql = "SELECT c.C_Id,c.C_Name,Job.J_Start_Location,Job.J_End_Location,Job.TimeStamp,Payment.Pay_Amount FROM Customer c INNER JOIN CustomerPaymentJob ON c.C_Id = CustomerPaymentJob.C_Id INNER JOIN Payment ON Payment.Pay_Id = CustomerPaymentJob.Pay_Id INNER JOIN Job ON Job.J_Id = CustomerPaymentJob.J_Id; ";
+                Console.WriteLine(sql);
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(sql, m_con);
+
+                SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
+                DataSet ds = new DataSet();
+                dataAdapter.Fill(ds);
+                dataGridView2.ReadOnly = true;
+                dataGridView2.DataSource = ds.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Something went wrong. Please check your inputs!");
+            }
+            finally
+            {
+                m_con.Close();
+            }
+
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            customerpayjob();
+        }
     }
 }
