@@ -579,5 +579,36 @@ namespace db_SmartMovers
             a.Show();
             this.Hide();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                string sql = "DELETE from CustomerType where C_Type_Id='" + textBox1.Text + "'";
+
+                SqlCommand cmd = new SqlCommand(sql, m_con);
+                m_con.Open();
+                cmd.ExecuteReader();
+                MessageBox.Show("Successfully deleted vehicle");
+
+
+            }
+
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                MessageBox.Show("Something went wrong. PLease check your inputs");
+            }
+            finally
+            {
+                m_con.Close();
+            }
+
+                  textBox1.Clear();
+                  textBox2.Clear();
+        }
+    
     }
 }
