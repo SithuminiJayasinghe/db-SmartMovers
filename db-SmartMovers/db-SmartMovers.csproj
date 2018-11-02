@@ -110,6 +110,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Sign_up.resx">
       <DependentUpon>Sign_up.cs</DependentUpon>
@@ -148,6 +149,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\926859_black-car-hd-wallpaper.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tags-lamborghini-wallpapers-black-background-super-cars.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tags-lamborghini-wallpapers-black-background-super-cars1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tags-lamborghini-wallpapers-black-background-super-cars2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7Z4EfH-hd-cars-wallpapers-1080p.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

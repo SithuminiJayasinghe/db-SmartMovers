@@ -63,7 +63,7 @@ namespace db_SmartMovers
                 SqlCommand cmd = new SqlCommand(sql, m_con);
                 m_con.Open();
                 cmd.ExecuteReader();
-
+                MessageBox.Show("Customer type details were successfully inserted!");
 
             }
 
@@ -392,6 +392,7 @@ namespace db_SmartMovers
         {
 
             insertctype();
+
             //try
             //{
             //    string sql = "INSERT INTO  CustomerType Values ('" + textBox1.Text + "','" + textBox2.Text + "')";
