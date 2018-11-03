@@ -162,7 +162,7 @@ namespace db_SmartMovers
                 SqlCommand cmd = new SqlCommand(sql, m_con);
                 m_con.Open();
                 cmd.ExecuteReader();
-                MessageBox.Show("Successful");
+                //MessageBox.Show("Successful");
 
 
             }
@@ -221,7 +221,7 @@ namespace db_SmartMovers
                 SqlCommand cmd = new SqlCommand(sql, m_con);
                 m_con.Open();
                 cmd.ExecuteReader();
-                MessageBox.Show("Successful");
+                //MessageBox.Show("Successful");
 
 
             }
@@ -283,7 +283,7 @@ namespace db_SmartMovers
                 SqlCommand cmd = new SqlCommand(sql, m_con);
         m_con.Open();
                 cmd.ExecuteReader();
-                MessageBox.Show("Successful");
+                //MessageBox.Show("Successful");
 
 
             }
@@ -312,7 +312,7 @@ namespace db_SmartMovers
                 SqlCommand cmd = new SqlCommand(sql, m_con);
                 m_con.Open();
                 cmd.ExecuteReader();
-                MessageBox.Show("Successful");
+                //MessageBox.Show("Successful");
 
 
             }
@@ -376,7 +376,7 @@ namespace db_SmartMovers
                 SqlCommand cmd = new SqlCommand(sql, m_con);
                 m_con.Open();
                 cmd.ExecuteReader();
-                MessageBox.Show("Successful");
+                //MessageBox.Show("Successful");
 
 
             }
@@ -737,7 +737,7 @@ namespace db_SmartMovers
             //    m_con.Close();
             //}
             ////////////////////////////////////////////////////////////////////////////////////////
-
+            MessageBox.Show("Your order is placed successfully!");
 
         }
 

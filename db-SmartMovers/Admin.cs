@@ -21,6 +21,12 @@ namespace db_SmartMovers
         public string lastdriverpassword = "";
         public int LASTDRIVERPASSWORD = 0;
 
+        public string lastassistantid = "";
+        public int LASTASSISTANTID = 0;
+        public string lastassistantname = "";
+        public int LASTASSISTANTNAME = 0;
+        public string lastassistantpassword = "";
+        public int LASTASSISTANTPASSWORD = 0;
 
         SqlConnection m_con = new DatabaseConnection().getConnection();
 
@@ -195,7 +201,7 @@ namespace db_SmartMovers
         {
             try
             {
-                string sql = "INSERT INTO  Driver Values ('" + textBox16.Text + "','" + textBox17.Text + "','" + textBox18.Text + "')";
+                string sql = "INSERT INTO  Driver Values ('"+ textBox16.Text +"' ,'" + textBox17.Text + "','" + textBox18.Text + "')";
                 Console.WriteLine(sql);
                 SqlCommand cmd = new SqlCommand(sql, m_con);
                 m_con.Open();
@@ -312,7 +318,7 @@ namespace db_SmartMovers
         {
             try
             {
-                string lastdriver = "select * from Driver order by Driver_Id desc;";
+                string lastdriver = "select top 1 Driver_Id, Driver_Name,Driver_Password from Driver order by Driver_Id desc;";
                 Console.WriteLine(lastdriver);
                 SqlCommand cmd_2 = new SqlCommand(lastdriver, m_con);
                 m_con.Open();
@@ -373,6 +379,83 @@ namespace db_SmartMovers
             }
 
         }
+
+
+
+
+        private void lastassistant()
+        {
+            try
+            {
+                string lastassistant = "select top 1 Assistant_Id, Assistant_Name,Assistant_Password from Assistant order by Assistant_Id desc;";
+                Console.WriteLine(lastassistant);
+                SqlCommand cmd_2 = new SqlCommand(lastassistant, m_con);
+                m_con.Open();
+                SqlDataReader dreader_2 = cmd_2.ExecuteReader();
+
+                if (dreader_2.Read())
+                {
+                    lastassistantid = dreader_2[0].ToString();
+                    LASTASSISTANTID = Convert.ToInt32(lastdriverid);
+
+                    lastassistantname = dreader_2[1].ToString();
+                    LASTASSISTANTNAME = Convert.ToInt32(lastdrivername);
+
+                    lastassistantpassword = dreader_2[2].ToString();
+                    LASTASSISTANTPASSWORD = Convert.ToInt32(lastdriverpassword);
+
+
+                    dreader_2.Close();
+                }
+            }
+
+
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Something went wrong in selecting last driver details");
+            }
+            finally
+            {
+                m_con.Close();
+            }
+        }
+
+
+
+
+        private void insertassistantintoemployee()
+        {
+            try
+            {
+                string sql_1 = "insert into  Employee values ('" + LASTASSISTANTID + "','" + lastassistantname + "','" + LASTASSISTANTPASSWORD + "')";
+
+                Console.WriteLine(sql_1);
+                SqlCommand cmd_1 = new SqlCommand(sql_1, m_con);
+                m_con.Open();
+                cmd_1.ExecuteReader();
+
+
+
+            }
+
+
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("something went wrong in inserting employee details");
+            }
+            finally
+            {
+                m_con.Close();
+            }
+
+        }
+
+
+
+
+
 
 
         private void insertlorrydetailsintoemployeetable()
@@ -521,7 +604,7 @@ namespace db_SmartMovers
 
 
             insertdriver();
-            //try
+            insertdriverintoemployee();
             //{
             //    string sql = "INSERT INTO  Driver Values ('" + textBox16.Text + "','" + textBox17.Text + "','" + textBox18.Text + "')";
             //    Console.WriteLine(sql);
@@ -572,6 +655,7 @@ namespace db_SmartMovers
 
 
             insertassistant();
+            insertassistantintoemployee();
             //try
             //{
             //    string sql = "INSERT INTO  Assistant Values ('" + textBox19.Text + "','" + textBox20.Text + "','" + textBox21.Text + "')";
