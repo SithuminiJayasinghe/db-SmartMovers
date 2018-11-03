@@ -197,11 +197,11 @@ namespace db_SmartMovers
         }
 
 
-        private void insertdriver()
+        private void insertdriverintoemployee()
         {
             try
             {
-                string sql = "INSERT INTO  Driver Values ('"+ textBox16.Text +"' ,'" + textBox17.Text + "','" + textBox18.Text + "')";
+                string sql = "INSERT INTO  Employee Values ('"+ textBox16.Text +"' ,'" + textBox17.Text + "','" + textBox18.Text + "')";
                 Console.WriteLine(sql);
                 SqlCommand cmd = new SqlCommand(sql, m_con);
                 m_con.Open();
@@ -222,19 +222,67 @@ namespace db_SmartMovers
                 m_con.Close();
             }
 
+        }
+
+        private void insertdriverintodriver()
+        {
+            try
+            {
+                string sql = "INSERT INTO  Driver Values ('" + textBox16.Text + "' ,'" + textBox17.Text + "','" + textBox18.Text + "')";
+                Console.WriteLine(sql);
+                SqlCommand cmd = new SqlCommand(sql, m_con);
+                m_con.Open();
+                cmd.ExecuteReader();
 
 
 
+            }
 
-           
 
+            catch (Exception ex)
+            {
 
+                MessageBox.Show("Something went wrong in inserting Driver details");
+            }
+            finally
+            {
+                m_con.Close();
+            }
 
         }
 
 
 
-        private void insertassistant()
+
+
+
+        private void insertassistantintoemployee()
+        {
+            try
+            {
+                string sql = "INSERT INTO  Employee Values ('" + textBox19.Text + "','" + textBox20.Text + "','" + textBox21.Text + "')";
+                Console.WriteLine(sql);
+                SqlCommand cmd = new SqlCommand(sql, m_con);
+                m_con.Open();
+                cmd.ExecuteReader();
+
+            }
+
+
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Something went wrong in inserting Assistant details");
+            }
+            finally
+            {
+                m_con.Close();
+            }
+
+        }
+
+
+        private void insertassistantintoassistant()
         {
             try
             {
@@ -260,7 +308,36 @@ namespace db_SmartMovers
         }
 
 
-        private void insertlorry()
+
+        private void insertlorryintovehicle()
+        {
+            try
+            {
+                string sql = "INSERT INTO  Vehicle Values ('" + textBox22.Text + "','" + textBox23.Text + "')";
+                Console.WriteLine(sql);
+                SqlCommand cmd = new SqlCommand(sql, m_con);
+                m_con.Open();
+                cmd.ExecuteReader();
+
+            }
+
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Something went wrong in inserting Lorry details");
+            }
+            finally
+            {
+                m_con.Close();
+            }
+
+
+        }
+
+
+
+
+        private void insertlorryintolorry()
         {
             try
             {
@@ -285,7 +362,43 @@ namespace db_SmartMovers
 
         }
 
-        private void insertcontainer()
+
+
+
+        private void insertcontainerintovehicle()
+        {
+            try
+            {
+                string sql = "INSERT INTO  Vehicle Values ('" + textBox24.Text + "','" + textBox25.Text + "')";
+                Console.WriteLine(sql);
+                SqlCommand cmd = new SqlCommand(sql, m_con);
+                m_con.Open();
+                cmd.ExecuteReader();
+
+
+
+            }
+
+
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Something went wrong in inserting Container details");
+            }
+            finally
+            {
+                m_con.Close();
+            }
+
+
+        }
+
+
+
+
+
+
+        private void insertcontainerintocontainer()
         {
             try
             {
@@ -314,498 +427,188 @@ namespace db_SmartMovers
         }
 
 
-        private void lastdriver()
-        {
-            try
-            {
-                string lastdriver = "select top 1 Driver_Id, Driver_Name,Driver_Password from Driver order by Driver_Id desc;";
-                Console.WriteLine(lastdriver);
-                SqlCommand cmd_2 = new SqlCommand(lastdriver, m_con);
-                m_con.Open();
-                SqlDataReader dreader_2 = cmd_2.ExecuteReader();
+        //private void lastdriver()
+        //{
+        //    try
+        //    {
+        //        string lastdriver = "select top 1 Driver_Id, Driver_Name,Driver_Password from Driver order by Driver_Id desc;";
+        //        Console.WriteLine(lastdriver);
+        //        SqlCommand cmd_2 = new SqlCommand(lastdriver, m_con);
+        //        m_con.Open();
+        //        SqlDataReader dreader_2 = cmd_2.ExecuteReader();
 
-                if (dreader_2.Read())
-                {
-                    lastdriverid = dreader_2[0].ToString();
-                    LASTDRIVERID = Convert.ToInt32(lastdriverid);
+        //        if (dreader_2.Read())
+        //        {
+        //            lastdriverid = dreader_2[0].ToString();
+        //            LASTDRIVERID = Convert.ToInt32(lastdriverid);
 
-                    lastdrivername = dreader_2[1].ToString();
-                    LASTDRIVERNAME = Convert.ToInt32(lastdrivername);
+        //            lastdrivername = dreader_2[1].ToString();
+        //            LASTDRIVERNAME = Convert.ToInt32(lastdrivername);
 
-                    lastdriverpassword = dreader_2[2].ToString();
-                    LASTDRIVERPASSWORD = Convert.ToInt32(lastdriverpassword);
-
-
-                    dreader_2.Close();
-                }
-            }
+        //            lastdriverpassword = dreader_2[2].ToString();
+        //            LASTDRIVERPASSWORD = Convert.ToInt32(lastdriverpassword);
 
 
-            catch (Exception ex)
-            {
-
-                MessageBox.Show("Something went wrong in selecting last driver details");
-            }
-            finally
-            {
-                m_con.Close();
-            }
-        }
-
-        private void insertdriverintoemployee()
-        {
-            try
-            {
-                string sql_1 = "insert into  Employee values ('" + LASTDRIVERID + "','" + lastdrivername + "','" + LASTDRIVERPASSWORD + "')";
-
-                Console.WriteLine(sql_1);
-                SqlCommand cmd_1 = new SqlCommand(sql_1, m_con);
-                m_con.Open();
-                cmd_1.ExecuteReader();
+        //            dreader_2.Close();
+        //        }
+        //    }
 
 
+        //    catch (Exception ex)
+        //    {
 
-            }
+        //        MessageBox.Show("Something went wrong in selecting last driver details");
+        //    }
+        //    finally
+        //    {
+        //        m_con.Close();
+        //    }
+        //}
 
+        //private void insertdriverintoemployee()
+        //{
+        //    try
+        //    {
+        //        string sql_1 = "insert into  Employee values ('" + LASTDRIVERID + "','" + lastdrivername + "','" + LASTDRIVERPASSWORD + "')";
 
-            catch (Exception ex)
-            {
-
-                MessageBox.Show("something went wrong in inserting employee details");
-            }
-            finally
-            {
-                m_con.Close();
-            }
-
-        }
+        //        Console.WriteLine(sql_1);
+        //        SqlCommand cmd_1 = new SqlCommand(sql_1, m_con);
+        //        m_con.Open();
+        //        cmd_1.ExecuteReader();
 
 
 
-
-        private void lastassistant()
-        {
-            try
-            {
-                string lastassistant = "select top 1 Assistant_Id, Assistant_Name,Assistant_Password from Assistant order by Assistant_Id desc;";
-                Console.WriteLine(lastassistant);
-                SqlCommand cmd_2 = new SqlCommand(lastassistant, m_con);
-                m_con.Open();
-                SqlDataReader dreader_2 = cmd_2.ExecuteReader();
-
-                if (dreader_2.Read())
-                {
-                    lastassistantid = dreader_2[0].ToString();
-                    LASTASSISTANTID = Convert.ToInt32(lastdriverid);
-
-                    lastassistantname = dreader_2[1].ToString();
-                    LASTASSISTANTNAME = Convert.ToInt32(lastdrivername);
-
-                    lastassistantpassword = dreader_2[2].ToString();
-                    LASTASSISTANTPASSWORD = Convert.ToInt32(lastdriverpassword);
+        //    }
 
 
-                    dreader_2.Close();
-                }
-            }
+        //    catch (Exception ex)
+        //    {
 
+        //        MessageBox.Show("something went wrong in inserting employee details");
+        //    }
+        //    finally
+        //    {
+        //        m_con.Close();
+        //    }
 
-            catch (Exception ex)
-            {
-
-                MessageBox.Show("Something went wrong in selecting last driver details");
-            }
-            finally
-            {
-                m_con.Close();
-            }
-        }
+        //}
 
 
 
 
-        private void insertassistantintoemployee()
-        {
-            try
-            {
-                string sql_1 = "insert into  Employee values ('" + LASTASSISTANTID + "','" + lastassistantname + "','" + LASTASSISTANTPASSWORD + "')";
+        //private void lastassistant()
+        //{
+        //    try
+        //    {
+        //        string lastassistant = "select top 1 Assistant_Id, Assistant_Name,Assistant_Password from Assistant order by Assistant_Id desc;";
+        //        Console.WriteLine(lastassistant);
+        //        SqlCommand cmd_2 = new SqlCommand(lastassistant, m_con);
+        //        m_con.Open();
+        //        SqlDataReader dreader_2 = cmd_2.ExecuteReader();
 
-                Console.WriteLine(sql_1);
-                SqlCommand cmd_1 = new SqlCommand(sql_1, m_con);
-                m_con.Open();
-                cmd_1.ExecuteReader();
+        //        if (dreader_2.Read())
+        //        {
+        //            lastassistantid = dreader_2[0].ToString();
+        //            LASTASSISTANTID = Convert.ToInt32(lastdriverid);
 
+        //            lastassistantname = dreader_2[1].ToString();
+        //            LASTASSISTANTNAME = Convert.ToInt32(lastdrivername);
 
-
-            }
-
-
-            catch (Exception ex)
-            {
-
-                MessageBox.Show("something went wrong in inserting employee details");
-            }
-            finally
-            {
-                m_con.Close();
-            }
-
-        }
+        //            lastassistantpassword = dreader_2[2].ToString();
+        //            LASTASSISTANTPASSWORD = Convert.ToInt32(lastdriverpassword);
 
 
+        //            dreader_2.Close();
+        //        }
+        //    }
+
+
+        //    catch (Exception ex)
+        //    {
+
+        //        MessageBox.Show("Something went wrong in selecting last driver details");
+        //    }
+        //    finally
+        //    {
+        //        m_con.Close();
+        //    }
+        //}
+
+
+
+
+        //private void insertassistantintoemployee()
+        //{
+        //    try
+        //    {
+        //        string sql_1 = "insert into  Employee values ('" + LASTASSISTANTID + "','" + lastassistantname + "','" + LASTASSISTANTPASSWORD + "')";
+
+        //        Console.WriteLine(sql_1);
+        //        SqlCommand cmd_1 = new SqlCommand(sql_1, m_con);
+        //        m_con.Open();
+        //        cmd_1.ExecuteReader();
+
+
+
+        //    }
+
+
+        //    catch (Exception ex)
+        //    {
+
+        //        MessageBox.Show("something went wrong in inserting employee details");
+        //    }
+        //    finally
+        //    {
+        //        m_con.Close();
+        //    }
+
+        //}
 
 
 
 
 
-        private void insertlorrydetailsintoemployeetable()
-        {
 
 
-        }
-
-        private void getlinsertcontainerdetailsintoemployeetableastcontainerid()
-        {
+        //private void insertlorrydetailsintoemployeetable()
+        //{
 
 
-        }
+        //}
+
+        //private void getlinsertcontainerdetailsintoemployeetableastcontainerid()
+        //{
+
+
+        //}
 
 
         private void button1_Click(object sender, EventArgs e)
         {
 
             insertctype();
-
-            //try
-            //{
-            //    string sql = "INSERT INTO  CustomerType Values ('" + textBox1.Text + "','" + textBox2.Text + "')";
-            //    Console.WriteLine(sql);
-            //    SqlCommand cmd = new SqlCommand(sql, m_con);
-            //    m_con.Open();
-            //    cmd.ExecuteReader();
-
-
-            //}
-
-
-            //catch (Exception ex)
-            //{
-
-            //    MessageBox.Show("Something went wrong in inserting CustomerType details");
-            //}
-            //finally
-            //{
-            //    m_con.Close();
-            //}
-
-
-
+            
             insertltype();
-            //try
-            //{
-            //    string sql = "INSERT INTO  LoadType Values ('" + textBox3.Text + "','" + textBox4.Text + "','"+textBox5.Text+"')";
-            //    Console.WriteLine(sql);
-            //    SqlCommand cmd = new SqlCommand(sql, m_con);
-            //    m_con.Open();
-            //    cmd.ExecuteReader();
-
-
-
-            //}
-
-
-            //catch (Exception ex)
-            //{
-
-            //    MessageBox.Show("Something went wrong in inserting LoadType details");
-            //}
-            //finally
-            //{
-            //    m_con.Close();
-            //}
-
+           
             insertptype();
-            //try
-            //{
-            //    string sql = "INSERT INTO  ProductType Values ('" + textBox6.Text + "','" + textBox7.Text + "')";
-            //    Console.WriteLine(sql);
-            //    SqlCommand cmd = new SqlCommand(sql, m_con);
-            //    m_con.Open();
-            //    cmd.ExecuteReader();
-
-
-
-            //}
-
-
-            //catch (Exception ex)
-            //{
-
-            //    MessageBox.Show("Something went wrong in inserting ProductType details");
-            //}
-            //finally
-            //{
-            //    m_con.Close();
-            //}
-
-
-
+            
             insertproduct();
 
-            //try
-            //{
-            //    string sql = "INSERT INTO  Product Values ('" + textBox8.Text + "','" + textBox9.Text + "','" + textBox10.Text + "','" + textBox11.Text + "','" + textBox12.Text + "')";
-            //    Console.WriteLine(sql);
-            //    SqlCommand cmd = new SqlCommand(sql, m_con);
-            //    m_con.Open();
-            //    cmd.ExecuteReader();
-
-
-
-            //}
-
-
-            //catch (Exception ex)
-            //{
-
-            //    MessageBox.Show("Something went wrong in inserting Product details");
-            //}
-            //finally
-            //{
-            //    m_con.Close();
-            //}
-
-
-
-
             insertdepot();
-            //try
-            //{
-            //    string sql = "INSERT INTO  Depot Values ('" + textBox13.Text + "','" + textBox14.Text + "','" + textBox15.Text + "')";
-            //    Console.WriteLine(sql);
-            //    SqlCommand cmd = new SqlCommand(sql, m_con);
-            //    m_con.Open();
-            //    cmd.ExecuteReader();
-
-
-
-            //}
-
-
-            //catch (Exception ex)
-            //{
-
-            //    MessageBox.Show("Something went wrong in inserting Depot details");
-            //}
-            //finally
-            //{
-            //    m_con.Close();
-            //}
-
-
-            insertdriver();
-            insertdriverintoemployee();
-            //{
-            //    string sql = "INSERT INTO  Driver Values ('" + textBox16.Text + "','" + textBox17.Text + "','" + textBox18.Text + "')";
-            //    Console.WriteLine(sql);
-            //    SqlCommand cmd = new SqlCommand(sql, m_con);
-            //    m_con.Open();
-            //    cmd.ExecuteReader();
-
-
-
-            //}
-
-
-            //catch (Exception ex)
-            //{
-
-            //    MessageBox.Show("Something went wrong in inserting Driver details");
-            //}
-            //finally
-            //{
-            //    m_con.Close();
-            //}
            
-            //insertdriverintoemployee();
-            ////////////////////////////////////////////////////////////////////////////////////////////////
-            //try
-            //{
-            //    string sql = "INSERT INTO  Employee Values ('" + textBox16.Text + "','" + textBox17.Text + "','" + textBox18.Text + "')";
-            //    Console.WriteLine(sql);
-            //    SqlCommand cmd = new SqlCommand(sql, m_con);
-            //    m_con.Open();
-            //    cmd.ExecuteReader();
+            insertdriverintoemployee();
+            insertdriverintodriver();
 
-
-
-            //}
-
-
-            //catch (Exception ex)
-            //{
-
-            //    MessageBox.Show("Something went wrong in inserting Employee details");
-            //}
-            //finally
-            //{
-            //    m_con.Close();
-            //}
-
-
-
-            insertassistant();
             insertassistantintoemployee();
-            //try
-            //{
-            //    string sql = "INSERT INTO  Assistant Values ('" + textBox19.Text + "','" + textBox20.Text + "','" + textBox21.Text + "')";
-            //    Console.WriteLine(sql);
-            //    SqlCommand cmd = new SqlCommand(sql, m_con);
-            //    m_con.Open();
-            //    cmd.ExecuteReader();
+            insertassistantintoassistant();
+            //insertassistantintoemployee();
+           
+            insertlorryintovehicle();
+            insertlorryintolorry();
 
-            //}
-
-
-            //catch (Exception ex)
-            //{
-
-            //    MessageBox.Show("Something went wrong in inserting Assistant details");
-            //}
-            //finally
-            //{
-            //    m_con.Close();
-            //}
-
-
-
-            ////////////////////////////////////////////////////////////////////////////////////////////////
-
-            //try
-            //{
-            //    string sql = "INSERT INTO  Employee Values ('" + textBox19.Text + "','" + textBox20.Text + "','" + textBox21.Text + "')";
-            //    Console.WriteLine(sql);
-            //    SqlCommand cmd = new SqlCommand(sql, m_con);
-            //    m_con.Open();
-            //    cmd.ExecuteReader();
-
-            //}
-
-
-            //catch (Exception ex)
-            //{
-
-            //    MessageBox.Show("Something went wrong in inserting employee_A details");
-            //}
-            //finally
-            //{
-            //    m_con.Close();
-            //}
-
-
-
-            insertlorry();
-            //try
-            //{
-            //    string sql = "INSERT INTO  Lorry Values ('" + textBox22.Text + "','" + textBox23.Text + "')";
-            //    Console.WriteLine(sql);
-            //    SqlCommand cmd = new SqlCommand(sql, m_con);
-            //    m_con.Open();
-            //    cmd.ExecuteReader();
-
-            //}
-
-            //catch (Exception ex)
-            //{
-
-            //    MessageBox.Show("Something went wrong in inserting Lorry details");
-            //}
-            //finally
-            //{
-            //    m_con.Close();
-            //}
-
-
-            ////////////////////////////////////////////////////////////////////////////////////////////////
-
-            //try
-            //{
-            //    string sql = "INSERT INTO  Vehicle Values ('" + textBox22.Text + "')";
-            //    Console.WriteLine(sql);
-            //    SqlCommand cmd = new SqlCommand(sql, m_con);
-            //    m_con.Open();
-            //    cmd.ExecuteReader();
-
-
-
-            //}
-
-
-            //catch (Exception ex)
-            //{
-
-            //    MessageBox.Show("Something went wrong in inserting Vehicle_L details");
-            //}
-            //finally
-            //{
-            //    m_con.Close();
-            //}
-
-
-
-            insertcontainer();
-            //try
-            //{
-            //    string sql = "INSERT INTO  Container Values ('" + textBox24.Text + "','" + textBox25.Text + "')";
-            //    Console.WriteLine(sql);
-            //    SqlCommand cmd = new SqlCommand(sql, m_con);
-            //    m_con.Open();
-            //    cmd.ExecuteReader();
-
-
-
-            //}
-
-
-            //catch (Exception ex)
-            //{
-
-            //    MessageBox.Show("Something went wrong in inserting Container details");
-            //}
-            //finally
-            //{
-            //    m_con.Close();
-            //}
-
-
-
-
-            ////////////////////////////////////////////////////////////////////////////////////////////////
-
-            //try
-            //{
-            //    string sql = "INSERT INTO  Vehicle_C Values ('" + textBox24.Text + "')";
-            //    Console.WriteLine(sql);
-            //    SqlCommand cmd = new SqlCommand(sql, m_con);
-            //    m_con.Open();
-            //    cmd.ExecuteReader();
-
-
-
-            //}
-
-
-            //catch (Exception ex)
-            //{
-
-            //    MessageBox.Show("Something went wrong in inserting Vehicle_C details");
-            //}
-            //finally
-            //{
-            //    m_con.Close();
-            //}
-
-
+            insertcontainerintovehicle();
+            insertcontainerintocontainer();
 
 
         }
@@ -900,8 +703,10 @@ namespace db_SmartMovers
             textBox9.ForeColor = Color.Black;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+
+        private void fillctype()
         {
+            
             {
                 m_con.Open();
                 SqlCommand cmd = new SqlCommand();
@@ -914,7 +719,7 @@ namespace db_SmartMovers
 
                 string C_Type_Id = "";
                 string C_Type_Name = "";
-             
+
 
                 while (sdr.Read())
                 {
@@ -922,20 +727,117 @@ namespace db_SmartMovers
 
                     C_Type_Id = sdr["C_Type_Id"].ToString();
                     C_Type_Name = sdr["C_Type_Name"].ToString();
-            
+
 
 
                 }
                 textBox1.Text = C_Type_Id;
                 textBox2.Text = C_Type_Name;
-        
+
 
 
                 m_con.Close();
             }
 
+        }
+
+
+        //private void fill_l_type()
+        //{
+        //    {
+        //        m_con.Open();
+        //        SqlCommand cmd = new SqlCommand();
+        //        cmd.Connection = m_con;
+        //        cmd.CommandType = CommandType.Text;
+        //        cmd.CommandText = "select * from LoadType where L_Type_Id='" + textBox3.Text + "'";
+
+
+        //        SqlDataReader sdr = cmd.ExecuteReader();
+
+        //        string L_Type_Id = "";
+        //        string L_Type_Name = "";
+        //        string L_Type_Cost = "";
+
+
+        //        while (sdr.Read())
+        //        {
+
+
+        //            L_Type_Id = sdr["L_Type_Id"].ToString();
+        //            L_Type_Name = sdr["L_Type_Name"].ToString();
+        //            L_Type_Cost= sdr["L_Type_Cost"].ToString();
+
+
+        //        }
+        //        textBox3.Text = L_Type_Id;
+        //        textBox4.Text = L_Type_Name;
+        //        textBox5.Text = L_Type_Cost;
+
+
+
+        //        m_con.Close();
+        //    }
+
+        //}
+
+
+
+
+        //private void fillptype()
+        //{
+        //    {
+        //        m_con.Open();
+        //        SqlCommand cmd = new SqlCommand();
+        //        cmd.Connection = m_con;
+        //        cmd.CommandType = CommandType.Text;
+        //        cmd.CommandText = "select * from ProductType where P_Type_Id='" + textBox6.Text + "'";
+
+
+        //        SqlDataReader sdr = cmd.ExecuteReader();
+
+        //        string P_Type_Id = "";
+        //        string P_Type_Name = "";
+
+
+        //        while (sdr.Read())
+        //        {
+
+
+        //            P_Type_Id = sdr["C_Type_Id"].ToString();
+        //            P_Type_Name = sdr["C_Type_Name"].ToString();
+
+
+
+        //        }
+        //        textBox6.Text = P_Type_Id;
+        //        textBox7.Text = P_Type_Name;
+
+
+
+        //        m_con.Close();
+        //    }
+
+        //}
+
+
+
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            fillctype();
+            //fill_l_type();
+            //fillptype();
 
         }
+
+
+        
+
+
+
+
+
+
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -964,10 +866,69 @@ namespace db_SmartMovers
                 m_con.Close();
             }
 
-            textBox14.Clear();
-            textBox13.Clear();
-            textBox2.Clear();
-            textBox1.Clear();
+
+
+
+
+            try
+            {
+
+                string sql = "Update LoadType set L_Type_Name,L_Type_Cost='" + textBox4.Text + "','"+textBox5.Text+"'";
+                Console.WriteLine(sql);
+
+                SqlCommand cmd = new SqlCommand(sql, m_con);
+                m_con.Open();
+                cmd.ExecuteReader();
+                MessageBox.Show("Successfully updated Customer type");
+
+
+            }
+
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                MessageBox.Show("Something went wrong. PLease check your inputs");
+            }
+            finally
+            {
+                m_con.Close();
+            }
+
+
+
+
+
+
+            try
+            {
+
+                string sql = "Update ProductType set P_Type_Name='" + textBox7.Text + "'";
+                Console.WriteLine(sql);
+
+                SqlCommand cmd = new SqlCommand(sql, m_con);
+                m_con.Open();
+                cmd.ExecuteReader();
+                MessageBox.Show("Successfully updated Customer type");
+
+
+            }
+
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                MessageBox.Show("Something went wrong. PLease check your inputs");
+            }
+            finally
+            {
+                m_con.Close();
+            }
+
+
+
+
+
         }
 
         private void toolTip1_Popup(object sender, PopupEventArgs e)
@@ -1046,6 +1007,364 @@ namespace db_SmartMovers
 
                   textBox1.Clear();
                   textBox2.Clear();
+
+
+
+            try
+            {
+
+                string sql = "DELETE from LoadType where L_Type_Id='" + textBox3.Text + "'";
+
+                SqlCommand cmd = new SqlCommand(sql, m_con);
+                m_con.Open();
+                cmd.ExecuteReader();
+                MessageBox.Show("Successfully deleted vehicle");
+
+
+            }
+
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                MessageBox.Show("Something went wrong. PLease check your inputs");
+            }
+            finally
+            {
+                m_con.Close();
+            }
+
+            textBox3.Clear();
+            textBox4.Clear();
+            textBox5.Clear();
+
+
+
+            try
+            {
+
+                string sql = "DELETE from ProductType where P_Type_Id='" + textBox6.Text + "'";
+
+                SqlCommand cmd = new SqlCommand(sql, m_con);
+                m_con.Open();
+                cmd.ExecuteReader();
+                MessageBox.Show("Successfully deleted vehicle");
+
+
+            }
+
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                MessageBox.Show("Something went wrong. PLease check your inputs");
+            }
+            finally
+            {
+                m_con.Close();
+            }
+
+            textBox6.Clear();
+            textBox7.Clear();
+
+
+
+            try
+            {
+
+                string sql = "DELETE from Product where P_Id='" + textBox8.Text + "'";
+
+                SqlCommand cmd = new SqlCommand(sql, m_con);
+                m_con.Open();
+                cmd.ExecuteReader();
+                MessageBox.Show("Successfully deleted vehicle");
+
+
+            }
+
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                MessageBox.Show("Something went wrong. PLease check your inputs");
+            }
+            finally
+            {
+                m_con.Close();
+            }
+
+            textBox8.Clear();
+            textBox9.Clear();
+            textBox10.Clear();
+            textBox11.Clear();
+            textBox12.Clear();
+
+
+
+            try
+            {
+
+                string sql = "DELETE from Depot where D_Id='" + textBox13.Text + "'";
+
+                SqlCommand cmd = new SqlCommand(sql, m_con);
+                m_con.Open();
+                cmd.ExecuteReader();
+                MessageBox.Show("Successfully deleted vehicle");
+
+
+            }
+
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                MessageBox.Show("Something went wrong. PLease check your inputs");
+            }
+            finally
+            {
+                m_con.Close();
+            }
+
+            textBox13.Clear();
+            textBox14.Clear();
+            textBox15.Clear();
+
+
+
+
+            try
+            {
+
+                string sql = "DELETE from Employee where E_Id='" + textBox16.Text + "'";
+
+                SqlCommand cmd = new SqlCommand(sql, m_con);
+                m_con.Open();
+                cmd.ExecuteReader();
+                MessageBox.Show("Successfully deleted vehicle");
+
+
+            }
+
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                MessageBox.Show("Something went wrong. PLease check your inputs");
+            }
+            finally
+            {
+                m_con.Close();
+            }
+
+            textBox16.Clear();
+            textBox17.Clear();
+            textBox18.Clear();
+
+
+            try
+            {
+
+                string sql = "DELETE from Driver where Driver_Id='" + textBox16.Text + "'";
+
+                SqlCommand cmd = new SqlCommand(sql, m_con);
+                m_con.Open();
+                cmd.ExecuteReader();
+                MessageBox.Show("Successfully deleted vehicle");
+
+
+            }
+
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                MessageBox.Show("Something went wrong. PLease check your inputs");
+            }
+            finally
+            {
+                m_con.Close();
+            }
+
+            textBox16.Clear();
+            textBox17.Clear();
+            textBox18.Clear();
+
+
+
+            try
+            {
+
+                string sql = "DELETE from Employee where E_Id='" + textBox19.Text + "'";
+
+                SqlCommand cmd = new SqlCommand(sql, m_con);
+                m_con.Open();
+                cmd.ExecuteReader();
+                MessageBox.Show("Successfully deleted vehicle");
+
+
+            }
+
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                MessageBox.Show("Something went wrong. PLease check your inputs");
+            }
+            finally
+            {
+                m_con.Close();
+            }
+
+            textBox19.Clear();
+            textBox20.Clear();
+            textBox21.Clear();
+
+
+
+
+            try
+            {
+
+                string sql = "DELETE from Assistant where Assistant_Id='" + textBox19.Text + "'";
+
+                SqlCommand cmd = new SqlCommand(sql, m_con);
+                m_con.Open();
+                cmd.ExecuteReader();
+                MessageBox.Show("Successfully deleted vehicle");
+
+
+            }
+
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                MessageBox.Show("Something went wrong. PLease check your inputs");
+            }
+            finally
+            {
+                m_con.Close();
+            }
+
+            textBox19.Clear();
+            textBox20.Clear();
+            textBox21.Clear();
+
+
+            try
+            {
+
+                string sql = "DELETE from Vehicle where V_Id='" + textBox22.Text + "'";
+
+                SqlCommand cmd = new SqlCommand(sql, m_con);
+                m_con.Open();
+                cmd.ExecuteReader();
+                MessageBox.Show("Successfully deleted vehicle");
+
+
+            }
+
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                MessageBox.Show("Something went wrong. PLease check your inputs");
+            }
+            finally
+            {
+                m_con.Close();
+            }
+
+            textBox22.Clear();
+            textBox23.Clear();
+
+
+            try
+            {
+
+                string sql = "DELETE from Lorry where Lorry_Id='" + textBox22.Text + "'";
+
+                SqlCommand cmd = new SqlCommand(sql, m_con);
+                m_con.Open();
+                cmd.ExecuteReader();
+                MessageBox.Show("Successfully deleted vehicle");
+
+
+            }
+
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                MessageBox.Show("Something went wrong. PLease check your inputs");
+            }
+            finally
+            {
+                m_con.Close();
+            }
+
+            textBox22.Clear();
+            textBox23.Clear();
+
+
+            try
+            {
+
+                string sql = "DELETE from Vehicle where V_Id='" + textBox24.Text + "'";
+
+                SqlCommand cmd = new SqlCommand(sql, m_con);
+                m_con.Open();
+                cmd.ExecuteReader();
+                MessageBox.Show("Successfully deleted vehicle");
+
+
+            }
+
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                MessageBox.Show("Something went wrong. PLease check your inputs");
+            }
+            finally
+            {
+                m_con.Close();
+            }
+
+            textBox24.Clear();
+            textBox25.Clear();
+
+
+
+            try
+            {
+
+                string sql = "DELETE from Container where Container_Id='" + textBox24.Text + "'";
+
+                SqlCommand cmd = new SqlCommand(sql, m_con);
+                m_con.Open();
+                cmd.ExecuteReader();
+                MessageBox.Show("Successfully deleted vehicle");
+
+
+            }
+
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                MessageBox.Show("Something went wrong. PLease check your inputs");
+            }
+            finally
+            {
+                m_con.Close();
+            }
+
+            textBox24.Clear();
+            textBox25.Clear();
+
+
+
         }
 
         public void customerpayjob()
